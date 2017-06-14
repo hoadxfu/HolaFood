@@ -17,7 +17,7 @@ public class DBContext {
     //return Connection object
     public Connection getConnection() throws Exception {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String url = "jdbc:sqlserver://holafood.database.windows.net:1433;"
+        String url = "jdbc:sqlserver://hfdsqlserver.database.windows.net:1433;"
                 + "database=holafood;"
                 + "user=holafood@holafood;"
                 + "password=makeiteasy@123;"
