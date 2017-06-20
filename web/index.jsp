@@ -4,10 +4,11 @@
     Author     : hoadx
 --%>
 
+<%@page import="fu.holafood.model.UserModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -15,5 +16,7 @@
         <h1>Hello World!</h1>
         <h1>We are team 3</h1>
         <h1>test commit code :/</h1>
+        <% UserModel um = new UserModel(); %>
+        <%= um.getUsers().get(0).getFullname() %><br/>
     </body>
 </html>
