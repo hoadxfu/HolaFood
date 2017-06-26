@@ -1,22 +1,15 @@
-<%-- 
-    Document   : index
-    Created on : Jun 14, 2017, 2:17:06 PM
-    Author     : hoadx
---%>
+<jsp:include page="/WEB-INF/pages/header.jsp">
+    <jsp:param name="title" value="HolaFood Homepage"/>
+</jsp:include>
 
-<%@page import="fu.holafood.model.UserModel"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head> 
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-        <h1>We are team 3</h1>
-        <h1>test commit code :/</h1>
-        <% UserModel um = new UserModel(); %>
-        <%= um.getUsers().get(0).getFullname() %><br/>
-    </body>
-</html>
+<!--Content of Website in here-->
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Maintain</div>
+        <div class="panel-body">
+            Sorry. This site is under maintain.
+        </div>
+    </div>
+</div>
+
+<jsp:include page="/WEB-INF/pages/footer.jsp"/>

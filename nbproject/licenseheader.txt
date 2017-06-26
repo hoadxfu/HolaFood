@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}HoladFood Web Application
+${licensePrefix}@author: Team 3 - SWE
+<#if licenseLast??>
+${licenseLast}
+</#if>
