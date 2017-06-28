@@ -12,28 +12,26 @@
         <title>Login page</title>
         <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
         <!--Bootstrap CSS-->
-        <link rel="stylesheet" type="text/css" href="/WEB-INF/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
         <!--Main site CSS-->
-        <link rel="stylesheet" type="text/css" href="/WEB-INF/assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/style.css" />
     </head>
     <body>
-        <%
-            String userName = "";
-            String register = "";
-
-            String profileLink = "";
-            String logOutLink = "";
-        %>
-
-        <jsp:include page="/WEB-INF/pages/header.jsp">
-            <jsp:param name="title" value="HolaFood Homepage"/>
-            <jsp:param name="username" value="<%=userName%>"/>
-            <jsp:param name="profile" value="<%=profileLink%>"/>
-
-            <jsp:param name="register" value="<%=register%>"/>
-            <jsp:param name="logout" value="<%=logOutLink%>"/>
-
-        </jsp:include>
+        <!--Header code in here-->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">HolaFood</a>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
 
         <div class="container">
             <div class="row">
