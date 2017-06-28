@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Đăng nhập</a></li>
-                        <li><a href="#">Đăng ký</a></li>
+                        <li><a href="${pageContext.request.contextPath}/register.jsp">Đăng ký</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
