@@ -5,6 +5,9 @@
 package fu.holafood.function;
 
 import java.security.MessageDigest;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -31,5 +34,32 @@ public class FuncUser {
             System.out.println(e);
         }
         return str;
+    }
+    
+    public Cookie getCookie(HttpServletRequest request, HttpServletResponse response) {
+        Cookie[] cookie = request.getCookies();
+        Cookie c = null;
+        if (cookie != null) {
+            for (Cookie cc : cookie) {
+                if (cc.getName().equals("username")) {
+                    c = cc;
+                }
+            }
+        }
+        return c;
+    }
+    
+    public void deleteCookie(HttpServletRequest request, HttpServletResponse response) {
+        Cookie[] cookie = request.getCookies();
+        Cookie c = null;
+        if (cookie != null) {
+            for (Cookie cc : cookie) {
+                if (cc.getName().equals("username")) {
+                    c = cc;
+                    c.setMaxAge(0);
+                    response.addCookie(c);
+                }
+            }
+        }
     }
 }

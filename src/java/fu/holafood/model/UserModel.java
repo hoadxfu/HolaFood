@@ -53,9 +53,20 @@ public class UserModel extends DBContext {
         ps.setInt(5, permi);
         ps.setInt(6, gender);
         ps.setDate(7, dob);
-         ps.setDate(8, created_at);
+        ps.setDate(8, created_at);
 
         int result = ps.executeUpdate();
     }
 
+    public boolean login(String username, String password) throws Exception {
+        String sql = "select * from Users where username=? and password=?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return true;
+        }
+        return false;
+    }
 }
