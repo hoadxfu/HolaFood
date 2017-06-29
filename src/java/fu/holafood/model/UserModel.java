@@ -33,16 +33,17 @@ public class UserModel extends DBContext {
                     rs.getString(2),
                     rs.getString(3),
                     rs.getString(4),
-                    rs.getInt(5),
+                    rs.getString(5),
                     rs.getInt(6),
-                    rs.getDate(7),
-                    rs.getDate(8)
+                    rs.getInt(7),
+                    rs.getDate(8),
+                    rs.getDate(9)
             ));
         }
         return users;
     }
 
-    public void addUsers(String userName, String password, String email, String fullName, int permi, int gender, Date dob, Date created_at) throws Exception {
+    public int addUsers(String userName, String password, String email, String fullName, int permi, int gender, Date dob, Date created_at) throws Exception {
 
         String insert = "INSERT INTO Users(username,password,email,fullname,permi,gender,dob,created_at) VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement ps = getConnection().prepareCall(insert);
@@ -56,6 +57,7 @@ public class UserModel extends DBContext {
         ps.setDate(8, created_at);
 
         int result = ps.executeUpdate();
+        return result;
     }
 
     public boolean login(String username, String password) throws Exception {

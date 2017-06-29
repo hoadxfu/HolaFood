@@ -30,7 +30,7 @@
                 <div class="panel-heading">Register</div>
                 <br/>
                 <br/>
-                <form class="form-horizontal" action="AddUser" method="GET">
+                <form class="form-horizontal" action="AddUser" method="POST">
 
                     <div class="form-group">
                         <label for="userName" class="col-sm-5 control-label">User name(*)</label>
@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-5 control-label">Email(*)</label>
                         <div class="col-sm-3">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email">
                              <%
                                 String errorMail = (String) request.getAttribute("errorMail");
                                 if (errorMail != null) {

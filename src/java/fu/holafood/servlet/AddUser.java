@@ -79,11 +79,11 @@ public class AddUser extends HttpServlet {
             String errorPass = "Password can not be null !!";
             request.setAttribute("errorPass", errorPass);
             rd.forward(request, response);
-        }else{
+        } else {
             password = funcUser.encryption(password);
         }
         //check valid email
-         if (email == null) {
+        if (email == null) {
             String errorMail = "Email can not be null !!";
             request.setAttribute("errorMail", errorMail);
             rd.forward(request, response);
@@ -96,7 +96,7 @@ public class AddUser extends HttpServlet {
         } else {
             gender = 0;
         }
-
+        
         //format DOB to sql.Date
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date dob = df.parse(date);
@@ -108,8 +108,10 @@ public class AddUser extends HttpServlet {
         java.sql.Date sqlCreated = new java.sql.Date(created_at.getTime());
 
         // insert to database
-        userModel.addUsers(userName, password, email, fullName, 1, gender, sqlDOB, sqlCreated);
-
+        if (userModel.addUsers(userName, password, email, fullName, 1, gender, sqlDOB, sqlCreated) != 0) {
+            response.sendRedirect("index.jsp");
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
