@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import fu.holafood.model.UserModel;
 import java.util.ArrayList;
-import fu.holafood.function.FuncUser;
+import fu.holafood.controller.FuncUser;
 
 /**
  *
@@ -52,10 +52,10 @@ public class AddUser extends HttpServlet {
         String strGender = request.getParameter("gender");
         ArrayList<User> users = new ArrayList<>();
         users = userModel.getUsers();
-
+        
         //Check valid for user,mail, pass
         //check valid userName
-        if (userName == null) {
+        if (userName.equals("")) {
             String errorUser = "User can not be null!!!";
             request.setAttribute("errorUser", errorUser);
             rd.forward(request, response);
@@ -70,7 +70,7 @@ public class AddUser extends HttpServlet {
             }
         }
         //checkvalid password
-        if (password == null) {
+        if (password.equals("")) {
             String errorPass = "Password can not be null !!";
             request.setAttribute("errorPass", errorPass);
             rd.forward(request, response);
@@ -78,7 +78,7 @@ public class AddUser extends HttpServlet {
             password = funcUser.encryption(password);
         }
         //check valid email
-        if (email == null) {
+        if (email.equals("")) {
             String errorMail = "Email can not be null !!";
             request.setAttribute("errorMail", errorMail);
             rd.forward(request, response);

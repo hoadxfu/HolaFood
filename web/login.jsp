@@ -48,10 +48,12 @@
                                 <div class="col-lg-12">
                                     <form id="login-form" action="Login" method="post" role="form" style="display: block;">
                                         <div class="form-group">
-                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Example: John" value="">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                            <label for="password">Password</label>
+                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Example: John123">
                                         </div>
 
 
