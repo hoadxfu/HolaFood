@@ -4,7 +4,7 @@
  */
 package fu.holafood.servlet;
 
-import fu.holafood.function.FuncUser;
+import fu.holafood.controller.FuncUser;
 import fu.holafood.model.UserModel;
 import java.io.IOException;
 import javax.servlet.ServletException;

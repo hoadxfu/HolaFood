@@ -2,7 +2,7 @@
  * HoladFood Web Application
  * @author: Team 3 - SWE
  */
-package fu.holafood.function;
+package fu.holafood.controller;
 
 import java.security.MessageDigest;
 import javax.servlet.http.Cookie;
