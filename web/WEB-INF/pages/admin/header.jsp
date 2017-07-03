@@ -1,3 +1,5 @@
+<%@page import="fu.holafood.model.UserModel"%>
+<%@page import="fu.holafood.controller.UserController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -31,6 +33,24 @@
     </head>
     <body>
     <body class="hold-transition skin-blue sidebar-mini">
+        <%
+            UserController fu = new UserController();
+            request.setCharacterEncoding("utf-8");
+            Cookie c = fu.getCookie(request, response);
+            UserModel um = new UserModel();
+            String permision = null;
+            try {
+                permision = um.getPermision(c);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+            String userName = "";
+
+            if (c != null && permision.equalsIgnoreCase("admin")) {
+                userName = c.getValue();
+            }
+        %>
         <div class="wrapper">
 
             <header class="main-header">
@@ -59,7 +79,7 @@
                                                             </a>
                                                         </li>-->
                             <li>
-                                <a href="#">
+                                <a href="${pageContext.request.contextPath}/Logout">
                                     <span class="hidden-xs">Logout</span>
                                 </a>
                             </li>
@@ -68,7 +88,10 @@
 
                 </nav>
             </header>
-            <jsp:include page="/WEB-INF/pages/admin/sidebar.jsp"/>
+            <jsp:include page="/WEB-INF/pages/admin/sidebar.jsp">
+                <jsp:param name="userName" value="<%=userName%>"/>
+            </jsp:include>
+            <
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -77,8 +100,8 @@
                         ${param.title}
                         <small>HolaFood Admin Panel</small>
                     </h1>
-                        <!--                    <ol class="breadcrumb">
-                                                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                                                <li class="active">Dashboard</li>
-                                            </ol>-->
+                    <!--                    <ol class="breadcrumb">
+                                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                                            <li class="active">Dashboard</li>
+                                        </ol>-->
                 </section>
