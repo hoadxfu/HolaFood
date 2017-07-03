@@ -1,3 +1,4 @@
+<%@page import="fu.holafood.model.UserModel"%>
 <%@page import="fu.holafood.controller.UserController"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -24,6 +25,14 @@
             UserController fu = new UserController();
             request.setCharacterEncoding("utf-8");
             Cookie c = fu.getCookie(request, response);
+            UserModel um = new UserModel();
+            String permision = null;
+            try {
+                permision = um.getPermision(c);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
             String userName;
             String register;
 
@@ -33,9 +42,16 @@
             if (c != null) {
                 userName = "Xin Chào " + c.getValue();
                 profileLink = "#"; //link to profile page
-
-                register = "Đăng Xuất";
-                logOutLink = "Logout";
+                if (permision.equalsIgnoreCase("user")) {
+                    register = "Đăng Xuất";
+                    logOutLink = "Logout";
+                } else if (permision.equalsIgnoreCase("admin")) {
+                    register = "Admin";
+                    logOutLink = "admin/index.jsp";
+                } else {
+                    register = "Đăng Xuất";
+                    logOutLink = "Logout";
+                }
 
             } else {
                 userName = "Đăng Nhập";

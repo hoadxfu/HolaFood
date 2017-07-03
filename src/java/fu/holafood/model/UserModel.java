@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.servlet.http.Cookie;
 
 /**
  *
@@ -70,5 +71,17 @@ public class UserModel extends DBContext {
             return true;
         }
         return false;
+    }
+    
+    public String getPermision(Cookie c) throws Exception{
+        String userName = c.getValue();
+        String sql = "select * from users u inner join permision_groups pemigr on u.permi = pemigr.permision_id where username = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setString(1, userName);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return rs.getString("name");
+        }
+        return "NotFound";
     }
 }

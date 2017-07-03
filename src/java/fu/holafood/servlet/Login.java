@@ -48,6 +48,9 @@ public class Login extends HttpServlet {
             } catch (Exception e) {
                 System.out.println(e);
             }
+        } else if (username.equals("") && pwd.equals("")) {
+            request.setAttribute("errorMessage", "please enter username and password");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else if (username.equals("")) {
             request.setAttribute("errorMessage", "please enter username");
             request.getRequestDispatcher("login.jsp").forward(request, response);
