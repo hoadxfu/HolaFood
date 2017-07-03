@@ -7,10 +7,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
         <title>${param.title}</title>
-        <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
+        <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">-->
         <!--Bootstrap CSS-->
         <link rel="stylesheet" type="text/css"
               href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
+        <!--FlexSlider-->
+        <link rel="stylesheet" type="text/css"
+              href="${pageContext.request.contextPath}/assets/css/flexslider.css" />
         <!--Main site CSS-->
         <link rel="stylesheet" type="text/css"
               href="${pageContext.request.contextPath}/assets/css/style.css" />
@@ -44,25 +47,27 @@
         %>
 
         <!--Header code in here-->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">HolaFood</a>
-                </div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="col-md-10 col-md-offset-1">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.jsp">HolaFood</a>
+                    </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<%=profileLink%>"><%=userName%></a></li>
-                        <li><a href="<%=logOutLink%>"><%=register%></a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="<%= profileLink%>"><%= userName%></a></li>
+                            <li><a href="<%= logOutLink%>"><%= register%></a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </div><!-- /.container -->
         </nav>

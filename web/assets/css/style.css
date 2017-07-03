@@ -1,10 +1,28 @@
 /*
  * CSS for HolaFood
+ * primary color: #FF773D
  */
+
+body { 
+    padding-top: 50px; 
+}
+
+.form-control, .form-group-lg .form-control {
+    border-radius: 0;
+}
+
+.btn-lg, .btn {
+    border-radius: 0;
+}
+
+.navbar-default {
+    background-color: #fff;
+    border-color: #fff;
+}
 
 /* Footer */
 footer {
-    background-color: #000;
+    background-color: #FF773D;
     color: #fff;
     padding: 20px;
 }
@@ -90,4 +108,55 @@ footer p {
 .forgot-password:focus {
     text-decoration: underline;
     color: #666;
+}
+
+/* Filter Box */
+.filter-box {
+    background-image: url(../images/filter-box-bg.jpg);
+    background-size: cover;
+    padding: 120px 0px;
+}
+
+.filter-box .flexslider {
+    margin: 0;
+}
+
+.filter-box .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    background-color: #FF773D;
+    color: #fff;
+    border: 1px solid #FF773D;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5;
+    padding: 15px;
+}
+
+.filter-box .nav-tabs>li.active>a:after {
+    background: #FF773D none repeat scroll 0 0;
+    content: "";
+    height: 20px;
+    left: 40%;
+    position: absolute;
+    top: 80%;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    width: 20px;
+}
+
+.filter-box .tab-content {
+    background: #fff;
+    padding: 30px;
+}
+
+.filter-box .filter-slider-image img {
+    width: 100%;
+}
+
+.filter-form .input-group-addon {
+    background-color: #FF773D;
+    color: #fff;
 }
