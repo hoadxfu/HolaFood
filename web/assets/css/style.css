@@ -4,7 +4,7 @@
  */
 
 body { 
-    padding-top: 55px; 
+    padding-top: 50px; 
 }
 
 .form-control, .form-group-lg .form-control {
@@ -31,7 +31,9 @@ footer p {
     margin: 0;
 }
 
+/* Login */
 .panel-login {
+    margin-top: 20px;
     border-color: #ccc;
     -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
