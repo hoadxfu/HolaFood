@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import fu.holafood.model.UserModel;
 import java.util.ArrayList;
-import fu.holafood.controller.FuncUser;
+import fu.holafood.controller.UserController;
 
 /**
  *
@@ -40,7 +40,7 @@ public class AddUser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         UserModel userModel = new UserModel();
-        FuncUser funcUser = new FuncUser();
+        UserController funcUser = new UserController();
 
         RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
 

@@ -4,7 +4,7 @@
  */
 package fu.holafood.servlet;
 
-import fu.holafood.controller.FuncUser;
+import fu.holafood.controller.UserController;
 import fu.holafood.model.UserModel;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         UserModel um = new UserModel();
-        FuncUser fu = new FuncUser();
+        UserController fu = new UserController();
         String username = request.getParameter("username");
         String pwd = request.getParameter("password");
         String remember = request.getParameter("remember");

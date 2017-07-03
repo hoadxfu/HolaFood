@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ray Sparrow
  */
-public class FuncUser {
+public class UserController {
     public  String encryption(String str) {
         byte[] defaultBytes = str.getBytes();
         try {

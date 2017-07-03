@@ -4,7 +4,7 @@
  */
 package fu.holafood.servlet;
 
-import fu.holafood.controller.FuncUser;
+import fu.holafood.controller.UserController;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +33,7 @@ public class Logout extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        FuncUser fu = new FuncUser();
+        UserController fu = new UserController();
         fu.deleteCookie(request, response);
         response.sendRedirect("index.jsp");
     }
