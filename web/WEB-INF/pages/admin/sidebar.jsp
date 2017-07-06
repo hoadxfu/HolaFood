@@ -5,7 +5,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="assets/img/avatar04.png" class="img-circle" alt="User Image">
+                <img src="${pageContext.request.contextPath}/admin/assets/img/avatar04.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>${param.userName}</p>
@@ -39,8 +39,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<%= (name.equals("user_list")) ? "active" : ""%>"><a href="users/list.jsp"><i class="fa fa-circle-o"></i> List User</a></li>
-                    <li class="<%= (name.equals("user_create")) ? "active" : ""%>"><a href="users/create.jsp"><i class="fa fa-circle-o"></i> Create New</a></li>
+                    <li class="<%= (name.equals("user_list")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/users/list.jsp"><i class="fa fa-circle-o"></i> List User</a></li>
+                    <li class="<%= (name.equals("user_create")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/users/create.jsp"><i class="fa fa-circle-o"></i> Create New</a></li>
                 </ul>
             </li>
         </ul>

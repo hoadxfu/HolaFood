@@ -6,10 +6,12 @@
 package fu.holafood.model;
 
 import fu.holafood.db.DBContext;
+import fu.holafood.entity.PermissionGroup;
 import fu.holafood.entity.User;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import javax.servlet.http.Cookie;
 
@@ -44,7 +46,7 @@ public class UserModel extends DBContext {
         return users;
     }
 
-    public int addUsers(String userName, String password, String email, String fullName, int permi, int gender, Date dob, Date created_at) throws Exception {
+    public int addUsers(String userName, String password, String email, String fullName, int permi, int gender, Date dob, Timestamp created_at) throws Exception {
 
         String insert = "INSERT INTO Users(username,password,email,fullname,permi,gender,dob,created_at) VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement ps = getConnection().prepareCall(insert);
@@ -55,7 +57,7 @@ public class UserModel extends DBContext {
         ps.setInt(5, permi);
         ps.setInt(6, gender);
         ps.setDate(7, dob);
-        ps.setDate(8, created_at);
+        ps.setTimestamp(8, created_at);
 
         int result = ps.executeUpdate();
         return result;
@@ -83,5 +85,21 @@ public class UserModel extends DBContext {
             return rs.getString("name");
         }
         return "NotFound";
+    }
+    
+    public ArrayList<PermissionGroup> getPermissionGroups() throws Exception{
+        ArrayList<PermissionGroup> permissionGroups = new ArrayList<>();
+        String sql = "select * from permision_groups";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            permissionGroups.add(new PermissionGroup(
+                    rs.getInt(1),
+                    rs.getInt(2),
+                    rs.getString(3)
+                    
+            ));
+        }
+        return permissionGroups;
     }
 }

@@ -19,6 +19,7 @@ import javax.servlet.RequestDispatcher;
 import fu.holafood.model.UserModel;
 import java.util.ArrayList;
 import fu.holafood.controller.UserController;
+import java.sql.Timestamp;
 
 /**
  *
@@ -98,9 +99,9 @@ public class AddUser extends HttpServlet {
         java.sql.Date sqlDOB = new java.sql.Date(dob.getTime());
 
         //get the current date
-        Date created_at = new Date();
+        java.util.Date today = new java.util.Date();
+        Timestamp sqlCreated = new java.sql.Timestamp(today.getTime());
 //        DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
-        java.sql.Date sqlCreated = new java.sql.Date(created_at.getTime());
 
         // insert to database
         if (userModel.addUsers(userName, password, email, fullName, 1, gender, sqlDOB, sqlCreated) != 0) {
