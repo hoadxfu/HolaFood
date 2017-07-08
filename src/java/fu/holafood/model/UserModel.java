@@ -74,6 +74,7 @@ public class UserModel extends DBContext {
                 return true;
             }
         } catch (Exception e) {
+            System.out.println("can not connect to database. " + e);
             return false;
         }
         return false;
