@@ -63,14 +63,18 @@ public class UserModel extends DBContext {
         return result;
     }
 
-    public boolean login(String username, String password) throws Exception {
-        String sql = "select * from Users where username=? and password=?";
-        PreparedStatement ps = getConnection().prepareCall(sql);
-        ps.setString(1, username);
-        ps.setString(2, password);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            return true;
+    public boolean login(String username, String password) {
+        try {
+            String sql = "select * from Users where username=? and password=?";
+            PreparedStatement ps = getConnection().prepareCall(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            return false;
         }
         return false;
     }
