@@ -27,7 +27,7 @@
             <% String name = request.getParameter("name");%>
             <li class="header">HolaFood Admin Panel</li>
             <li class="<%= (name.equals("dashboard")) ? "active" : ""%>">
-                <a href="index.jsp">
+                <a href="${pageContext.request.contextPath}/admin/index.jsp">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
@@ -41,6 +41,18 @@
                 <ul class="treeview-menu">
                     <li class="<%= (name.equals("user_list")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/users/list.jsp"><i class="fa fa-circle-o"></i> List User</a></li>
                     <li class="<%= (name.equals("user_create")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/users/create.jsp"><i class="fa fa-circle-o"></i> Create New</a></li>
+                </ul>
+            </li>
+            <li class="<%= (name.equals("products")) ? "active" : ""%> treeview">
+                <a href="#">
+                    <i class="fa fa-user"></i> <span>Product Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="<%= (name.equals("product_list")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/products/list.jsp"><i class="fa fa-circle-o"></i> List Product</a></li>
+                    <li class="<%= (name.equals("product_create")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/products/create.jsp"><i class="fa fa-circle-o"></i> Create New Product</a></li>
                 </ul>
             </li>
         </ul>

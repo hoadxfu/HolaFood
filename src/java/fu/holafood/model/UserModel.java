@@ -74,20 +74,22 @@ public class UserModel extends DBContext {
         }
         return false;
     }
-    
-    public String getPermision(Cookie c) throws Exception{
-        String userName = c.getValue();
-        String sql = "select * from users u inner join permision_groups pemigr on u.permi = pemigr.permision_id where username = ?";
-        PreparedStatement ps = getConnection().prepareCall(sql);
-        ps.setString(1, userName);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            return rs.getString("name");
+
+    public String getPermision(Cookie c) throws Exception {
+        if (c != null) {
+            String userName = c.getValue();
+            String sql = "select * from users u inner join permision_groups pemigr on u.permi = pemigr.permision_id where username = ?";
+            PreparedStatement ps = getConnection().prepareCall(sql);
+            ps.setString(1, userName);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString("name");
+            }
         }
-        return "NotFound";
+        return "";
     }
-    
-    public ArrayList<PermissionGroup> getPermissionGroups() throws Exception{
+
+    public ArrayList<PermissionGroup> getPermissionGroups() throws Exception {
         ArrayList<PermissionGroup> permissionGroups = new ArrayList<>();
         String sql = "select * from permision_groups";
         PreparedStatement ps = getConnection().prepareCall(sql);
@@ -97,7 +99,6 @@ public class UserModel extends DBContext {
                     rs.getInt(1),
                     rs.getInt(2),
                     rs.getString(3)
-                    
             ));
         }
         return permissionGroups;

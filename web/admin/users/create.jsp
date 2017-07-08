@@ -6,26 +6,27 @@
     UserController fu = new UserController();
     Cookie c = fu.getCookie(request, response);
     UserModel um = new UserModel();
-    String permision = null;
+    String permission = null;
     try {
-        permision = um.getPermision(c);
+        permission = um.getPermision(c);
     } catch (Exception e) {
         System.out.println(e);
     }
-    if (c == null || !permision.equalsIgnoreCase("admin")) {
+    if (c == null || !permission.equalsIgnoreCase("admin")) {
         response.sendRedirect("../../index.jsp");
     }
 %>
 <jsp:include page="/WEB-INF/pages/admin/header.jsp">
     <jsp:param name="title" value="Dashboard"/>
-    <jsp:param name="name" value="dashboard"/>
+    <jsp:param name="name" value="users"/>
+    <jsp:param name="permission" value="<%=permission%>"/>
 </jsp:include>
 
 <!-- Main content -->
 <!-- Horizontal Form -->
 <div class="box box-info">
     <div class="box-header with-border">
-        <h3 class="box-title">Horizontal Form</h3>
+        <h3 class="box-title">Create New User</h3>
     </div>
     <!-- /.box-header -->
     <!-- form start -->

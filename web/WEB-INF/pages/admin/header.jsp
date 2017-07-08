@@ -37,17 +37,11 @@
             UserController fu = new UserController();
             request.setCharacterEncoding("utf-8");
             Cookie c = fu.getCookie(request, response);
-            UserModel um = new UserModel();
-            String permision = null;
-            try {
-                permision = um.getPermision(c);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-
+            String permission = null;
+            permission = request.getParameter("permission");
             String userName = "";
 
-            if (c != null && permision.equalsIgnoreCase("admin")) {
+            if (c != null && permission.equalsIgnoreCase("admin")) {
                 userName = c.getValue();
             }
         %>
@@ -56,7 +50,7 @@
             <header class="main-header">
 
                 <!-- Logo -->
-                <a href="index.jsp" class="logo">
+                <a href="${pageContext.request.contextPath}/index.jsp" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>H</b>LF</span>
                     <!-- logo for regular state and mobile devices -->
