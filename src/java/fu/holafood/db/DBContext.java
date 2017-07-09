@@ -17,10 +17,10 @@ public class DBContext {
     //return Connection object
     public Connection getConnection() throws Exception {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String url = "jdbc:sqlserver://holafood.database.windows.net:1433;"
+        String url = "jdbc:sqlserver://localhost:1433;"
                 + "database=holafood_db;"
-                + "user=holafood@holafood;"
-                + "password=makeiteasy@123;";
+                + "user=sa;"
+                + "password=abc123@!";
         //loading sql driver
         Class.forName(driver);
         //open and return connection

@@ -1,0 +1,17 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: hoadx -->
+ 
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value="html" />
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <!-- Add your configuration elements here -->
+    <package namespace="/" name="homepage" extends="struts-default">
+        <action name="home" class="fu.holafood.action.HomeAction" method="execute">
+            <result name="success">jsp/home.jsp</result>
+        </action>
+    </package>
+</struts>
