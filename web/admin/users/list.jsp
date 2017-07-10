@@ -12,7 +12,7 @@
     } catch (Exception e) {
         System.out.println(e);
     }
-    if (c == null || !permission.equalsIgnoreCase("admin")) {
+    if (c == null || !(permission.equalsIgnoreCase("admin") || permission.equalsIgnoreCase("moderator"))) {
         response.sendRedirect("../../index.jsp");
     }
 %>
@@ -46,13 +46,11 @@
                         <tr>
                             <th>ID</th>
                             <th>User Name</th>
-                            <th>Password</th>
                             <th>Email</th>
-                            <th>Full Name</th>
                             <th>Permission</th>
                             <th>Gender</th>
-                            <th>Dob</th>
                             <th>Created At</th>
+                            <th>Action</th>
                         </tr>
                         <%
                             try {
@@ -63,13 +61,11 @@
                         <tr>
                             <td><%=u.getId()%></td>
                             <td><%=u.getUsername()%></td>
-                            <td><%=u.getPassword()%></td>
                             <td><%=u.getEmail()%></td>
-                            <td><%=u.getFullname()%></td>
                             <td><%=u.getPermi()%></td>
                             <td><%=u.getGender()%></td>
-                            <td><%=u.getDob()%></td>
                             <td><%=u.getCreatedAt()%></td>
+                            <td>sth :))</td>
                         </tr>
                         <%
                                 }

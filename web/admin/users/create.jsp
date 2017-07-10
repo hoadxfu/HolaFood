@@ -12,7 +12,7 @@
     } catch (Exception e) {
         System.out.println(e);
     }
-    if (c == null || !permission.equalsIgnoreCase("admin")) {
+    if (c == null || !(permission.equalsIgnoreCase("admin") || permission.equalsIgnoreCase("moderator"))) {
         response.sendRedirect("../../index.jsp");
     }
 %>

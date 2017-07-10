@@ -45,7 +45,7 @@
             </li>
             <li class="<%= (name.equals("products") || name.contains("product_")) ? "active" : ""%> treeview">
                 <a href="#">
-                    <i class="fa fa-user"></i> <span>Product Management</span>
+                    <i class="fa fa-birthday-cake"></i> <span>Product Management</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

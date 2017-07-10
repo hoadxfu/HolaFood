@@ -6,6 +6,7 @@
 package fu.holafood.entity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -18,15 +19,15 @@ public class User {
     private String password;
     private String email;
     private String fullname;
-    private int permi;
+    private String permi;
     private int gender;
     private Date dob;
-    private Date createdAt;
+    private Timestamp createdAt;
 
     public User() {
     }
 
-    public User(int id, String username, String password, String email, String fullname, int permi, int gender, Date dob, Date createdAt) {
+    public User(int id, String username, String password, String email, String fullname, String permi, int gender, Date dob, Timestamp createdAt) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -78,11 +79,11 @@ public class User {
         this.fullname = fullname;
     }
 
-    public int getPermi() {
+    public String getPermi() {
         return permi;
     }
 
-    public void setPermi(int permi) {
+    public void setPermi(String permi) {
         this.permi = permi;
     }
 
@@ -102,11 +103,11 @@ public class User {
         this.dob = dob;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 

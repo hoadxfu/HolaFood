@@ -11,15 +11,13 @@ package fu.holafood.entity;
 public class PermissionGroup {
 
     private int id;
-    private int permissionId;
     private String name;
 
     public PermissionGroup() {
     }
 
-    public PermissionGroup(int id, int permissionId, String name) {
+    public PermissionGroup(int id, String name) {
         this.id = id;
-        this.permissionId = permissionId;
         this.name = name;
     }
 
@@ -29,14 +27,6 @@ public class PermissionGroup {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getPermissionId() {
-        return permissionId;
-    }
-
-    public void setPermissionId(int permissionId) {
-        this.permissionId = permissionId;
     }
 
     public String getName() {

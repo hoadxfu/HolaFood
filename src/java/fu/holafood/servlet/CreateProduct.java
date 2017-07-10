@@ -7,9 +7,12 @@ package fu.holafood.servlet;
 import fu.holafood.controller.UserController;
 import fu.holafood.model.UserModel;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NhocNho
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
-
-    
+@WebServlet(name = "CreateProduct", urlPatterns = {"/CreateProduct"})
+public class CreateProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,43 +34,34 @@ public class Login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        UserModel um = new UserModel();
-        UserController fu = new UserController();
-        String username = request.getParameter("username");
-        String pwd = request.getParameter("password");
-        String remember = request.getParameter("remember");
-        boolean validLogin = false;
-        if (!(username.equals("") || pwd.equals(""))) {
-            pwd = fu.encryption(pwd);
-            try {
-                validLogin = um.login(username, pwd);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        } else if (username.equals("") && pwd.equals("")) {
-            request.setAttribute("errorMessage", "please enter username and password");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else if (username.equals("")) {
-            request.setAttribute("errorMessage", "please enter username");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
-            request.setAttribute("errorMessage", "please enter password");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        UserModel userModel = new UserModel();
+        UserController uc = new UserController();
+        boolean sent = false;
+        String productName = request.getParameter("productName");
+        String slug = request.getParameter("slug");
+        String des = request.getParameter("description");
+        
+        if (productName.equals("") && slug.equals("")) {
+            request.setAttribute("error", "Product name and slug cannot both be empty.");
+            request.getRequestDispatcher("admin/products/create.jsp").forward(request, response);
+            sent = true;
+        } else if (!slug.equals("")) {
+            slug = uc.removeAccent(slug);
+            slug = slug.replaceAll("[^a-zA-Z0-9]+","-");
+        } else if (!productName.equals("") && slug.equals("")) {
+            String tmp = uc.removeAccent(productName);
+            slug = tmp.replaceAll("[^a-zA-Z0-9]+","-");
         }
-        if (validLogin) {
-            Cookie cookie = new Cookie("username", username);
-            if (remember != null) {
-                cookie.setMaxAge(432000);
-            }
-            response.addCookie(cookie);
-            response.sendRedirect("index.jsp");
-        } else {
-            request.setAttribute("errorMessage", "Invalid user or password");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        
+        java.util.Date today = new java.util.Date();
+        Timestamp createdAt = new java.sql.Timestamp(today.getTime());
+        
+        if (!sent && userModel.AddProduct(productName, slug, des, createdAt, createdAt) != 0) {
+            request.setAttribute("success", "Created successfully");
+            request.getRequestDispatcher("admin/products/create.jsp").forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,7 +76,11 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(CreateProduct.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -98,7 +94,11 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(CreateProduct.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

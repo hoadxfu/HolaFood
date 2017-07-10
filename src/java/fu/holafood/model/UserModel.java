@@ -27,7 +27,7 @@ public class UserModel extends DBContext {
 
     public ArrayList<User> getUsers() throws Exception {
         ArrayList<User> users = new ArrayList<>();
-        String sql = "select * from users";
+        String sql = "select * from users u inner join permission_groups permi_gr on u.permi = permi_gr.id";
         PreparedStatement ps = getConnection().prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
@@ -37,10 +37,10 @@ public class UserModel extends DBContext {
                     rs.getString(3),
                     rs.getString(4),
                     rs.getString(5),
-                    rs.getInt(6),
+                    rs.getString(11),
                     rs.getInt(7),
                     rs.getDate(8),
-                    rs.getDate(9)
+                    rs.getTimestamp(9)
             ));
         }
         return users;
@@ -102,10 +102,20 @@ public class UserModel extends DBContext {
         while (rs.next()) {
             permissionGroups.add(new PermissionGroup(
                     rs.getInt(1),
-                    rs.getInt(2),
-                    rs.getString(3)
+                    rs.getString(2)
             ));
         }
         return permissionGroups;
+    }
+    
+    public int AddProduct(String name, String slug, String des, Timestamp createAt, Timestamp updateAt) throws Exception {
+        String sql = "insert into products(name, slug, description, created_at, updated_at) values(?, ?, ?, ?, ?)";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setString(1, name);
+        ps.setString(2, slug);
+        ps.setString(3, des);
+        ps.setTimestamp(4, createAt);
+        ps.setTimestamp(5, updateAt);
+        return ps.executeUpdate();
     }
 }

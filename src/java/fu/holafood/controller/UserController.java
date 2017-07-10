@@ -5,6 +5,8 @@
 package fu.holafood.controller;
 
 import java.security.MessageDigest;
+import java.text.Normalizer;
+import java.util.regex.Pattern;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Ray Sparrow
  */
 public class UserController {
-    public  String encryption(String str) {
+
+    public String encryption(String str) {
         byte[] defaultBytes = str.getBytes();
         try {
             MessageDigest algorithm = MessageDigest.getInstance("MD5");
@@ -35,7 +38,7 @@ public class UserController {
         }
         return str;
     }
-    
+
     public Cookie getCookie(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookie = request.getCookies();
         Cookie c = null;
@@ -48,7 +51,7 @@ public class UserController {
         }
         return c;
     }
-    
+
     public void deleteCookie(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookie = request.getCookies();
         Cookie c = null;
@@ -61,5 +64,12 @@ public class UserController {
                 }
             }
         }
+    }
+
+    public String removeAccent(String s) {
+
+        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(temp).replaceAll("");
     }
 }

@@ -21,5 +21,47 @@
     <jsp:param name="name" value="product_create"/>
     <jsp:param name="permission" value="<%=permission%>"/>
 </jsp:include>
+<%@taglib uri="/struts-tags" prefix="s"%>  
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Create Product</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <form action="${pageContext.request.contextPath}/CreateProduct" method="POST">
+                <div class="form-group">
+                    <label>Product Name: </label>
+                    <input type="text" class="form-control" placeholder="" name="productName">
+                </div>
+                <div class="form-group">
+                    <label>Slug: </label>
+                    <input type="text" class="form-control" placeholder="" name="slug">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" placeholder="" name="description">
+                </div>
+                <div class="form-group text-center">
+                    <div class="col-sm-12">
+                        <%
+                            if (null != request.getAttribute("error")) {
+                                out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
+                            }
+                            if (null != request.getAttribute("success")) {
+                                out.println("<p class=\"bg-success\">" + request.getAttribute("success") + "</p>");
+                            }
+                        %>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right">Create New</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</section>
 
 <jsp:include page="/WEB-INF/pages/admin/footer.jsp"/>
