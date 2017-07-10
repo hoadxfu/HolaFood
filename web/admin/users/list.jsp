@@ -22,6 +22,21 @@
     <jsp:param name="permission" value="<%=permission%>"/>
 </jsp:include>
 
+<script>
+    function getUserId(userId, buttonName) {
+        if (buttonName === "deleteButton") {
+            var bool = confirm("Do you really want to delete?");
+            if (bool) {
+                document.getElementById('deleteAction').value = userId;
+                document.getElementById('actionForm').submit();
+            }
+        } else {
+            document.getElementById('updateAction').value = userId;
+            document.getElementById('actionForm').submit();
+        }
+    }
+</script>
+
 <!-- Main content -->
 <section class="content">
     <div class="row">
@@ -29,7 +44,6 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">List All Users</h3>
-
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -39,7 +53,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group text-center">
+                        <div class="col-sm-12">
+                            <%
+                                if (null != request.getAttribute("error")) {
+                                    out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
+                                }
+                                if (null != request.getAttribute("success")) {
+                                    out.println("<p class=\"bg-success\">" + request.getAttribute("success") + "</p>");
+                                }
+                            %>
+                        </div>
+                    </div>
                 </div>
+
+                <form id='actionForm' action="${pageContext.request.contextPath}/UserListAction" method="POST">
+                    <input id="deleteAction" type="hidden" name="deleteAction" value="">
+                    <input id="updateAction" type="hidden" name="updateAction" value="">
+                </form>
+
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
@@ -65,7 +97,10 @@
                             <td><%=u.getPermi()%></td>
                             <td><%=u.getGender()%></td>
                             <td><%=u.getCreatedAt()%></td>
-                            <td>sth :))</td>
+                            <td>
+                                <input type="button" value="Delete" onclick="getUserId(<%=u.getId()%>, 'deleteButton')">
+                                <input type="button" value="Update" onclick="getUserId(<%=u.getId()%>, 'updateButton')">
+                            </td>
                         </tr>
                         <%
                                 }

@@ -38,7 +38,7 @@ public class UserModel extends DBContext {
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(11),
-                    rs.getInt(7),
+                    rs.getInt(7) == 1 ? "Male" : "Female",
                     rs.getDate(8),
                     rs.getTimestamp(9)
             ));
@@ -118,4 +118,12 @@ public class UserModel extends DBContext {
         ps.setTimestamp(5, updateAt);
         return ps.executeUpdate();
     }
+    
+    public int deleteUser(int userId) throws Exception{
+        String sql = "delete from users where id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setInt(1, userId);
+        return ps.executeUpdate();
+    }
+    
 }

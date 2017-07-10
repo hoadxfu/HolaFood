@@ -20,14 +20,14 @@ public class User {
     private String email;
     private String fullname;
     private String permi;
-    private int gender;
+    private String gender;
     private Date dob;
     private Timestamp createdAt;
 
     public User() {
     }
 
-    public User(int id, String username, String password, String email, String fullname, String permi, int gender, Date dob, Timestamp createdAt) {
+    public User(int id, String username, String password, String email, String fullname, String permi, String gender, Date dob, Timestamp createdAt) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -87,11 +87,11 @@ public class User {
         this.permi = permi;
     }
 
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
