@@ -83,7 +83,7 @@ public class UserModel extends DBContext {
     public String getPermision(Cookie c) throws Exception {
         if (c != null) {
             String userName = c.getValue();
-            String sql = "select * from users u inner join permision_groups pemigr on u.permi = pemigr.permision_id where username = ?";
+            String sql = "select * from users u inner join permission_groups pemigr on u.permi = pemigr.id where username = ?";
             PreparedStatement ps = getConnection().prepareCall(sql);
             ps.setString(1, userName);
             ResultSet rs = ps.executeQuery();
@@ -96,7 +96,7 @@ public class UserModel extends DBContext {
 
     public ArrayList<PermissionGroup> getPermissionGroups() throws Exception {
         ArrayList<PermissionGroup> permissionGroups = new ArrayList<>();
-        String sql = "select * from permision_groups";
+        String sql = "select * from permission_groups";
         PreparedStatement ps = getConnection().prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {

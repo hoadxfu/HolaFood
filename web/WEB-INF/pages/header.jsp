@@ -46,7 +46,7 @@
                 if (permision.equalsIgnoreCase("user")) {
                     register = "Đăng Xuất";
                     logOutLink = "Logout";
-                } else if (permision.equalsIgnoreCase("admin")) {
+                } else if (permision.equalsIgnoreCase("admin") || permision.equalsIgnoreCase("moderator")) {
                     register = "Admin";
                     logOutLink = "admin/index.jsp";
                 } else {

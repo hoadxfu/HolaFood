@@ -58,6 +58,7 @@ public class Login extends HttpServlet {
             request.setAttribute("errorMessage", "please enter password");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+        System.out.println("valid ????? : " + validLogin);
         if (validLogin) {
             Cookie cookie = new Cookie("username", username);
             if (remember != null) {

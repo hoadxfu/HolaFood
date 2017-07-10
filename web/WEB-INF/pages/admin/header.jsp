@@ -41,7 +41,7 @@
             permission = request.getParameter("permission");
             String userName = "";
 
-            if (c != null && permission.equalsIgnoreCase("admin")) {
+            if (c != null && permission.equalsIgnoreCase("admin") || permission.equalsIgnoreCase("moderator")) {
                 userName = c.getValue();
             }
         %>
