@@ -17,8 +17,8 @@
     }
 %>
 <jsp:include page="/WEB-INF/pages/admin/header.jsp">
-    <jsp:param name="title" value="Dashboard"/>
-    <jsp:param name="name" value="products"/>
+    <jsp:param name="title" value="Create New Product"/>
+    <jsp:param name="name" value="product_create"/>
     <jsp:param name="permission" value="<%=permission%>"/>
 </jsp:include>
 

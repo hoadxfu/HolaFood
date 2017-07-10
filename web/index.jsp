@@ -5,5 +5,5 @@
 --%>
 
 <% 
-  response.sendRedirect("/HolaFood/home.html");
+  response.sendRedirect("home.html");
 %>

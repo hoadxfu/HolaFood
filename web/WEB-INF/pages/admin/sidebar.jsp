@@ -31,7 +31,7 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="<%= (name.equals("users")) ? "active" : ""%> treeview">
+            <li class="<%= (name.equals("users") || name.contains("user_")) ? "active" : ""%> treeview">
                 <a href="#">
                     <i class="fa fa-user"></i> <span>User Management</span>
                     <span class="pull-right-container">
@@ -43,7 +43,7 @@
                     <li class="<%= (name.equals("user_create")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/users/create.jsp"><i class="fa fa-circle-o"></i> Create New</a></li>
                 </ul>
             </li>
-            <li class="<%= (name.equals("products")) ? "active" : ""%> treeview">
+            <li class="<%= (name.equals("products") || name.contains("product_")) ? "active" : ""%> treeview">
                 <a href="#">
                     <i class="fa fa-user"></i> <span>Product Management</span>
                     <span class="pull-right-container">

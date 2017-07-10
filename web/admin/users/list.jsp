@@ -17,13 +17,13 @@
     }
 %>
 <jsp:include page="/WEB-INF/pages/admin/header.jsp">
-    <jsp:param name="title" value="Dashboard"/>
-    <jsp:param name="name" value="users"/>
+    <jsp:param name="title" value="Users"/>
+    <jsp:param name="name" value="user_list"/>
     <jsp:param name="permission" value="<%=permission%>"/>
 </jsp:include>
 
 <!-- Main content -->
-<section>
+<section class="content">
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
