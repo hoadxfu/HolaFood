@@ -36,32 +36,31 @@
                         <label for="userName" class="col-sm-5 control-label">User name(*)</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="userName" name="userName" placeholder="User Name"/>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-sm-12">
                             <%
-                                String errorUser = (String) request.getAttribute("errorUser");
-                                if (errorUser != null) {
-                            %>
-                            <p><%=errorUser%></p>
-                            <%
+                                if (null != request.getAttribute("emptyUserName")) {
+                                    out.println("<p class=\"bg-danger\">" + request.getAttribute("emptyUserName") + "</p>");
                                 }
                             %>
-
                         </div>
-
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-5 control-label">Password(*)</label>
                         <div class="col-sm-3">
                             <input type="password" class="form-control" id="inputPassword3" name="password" >
-                             <%
-                                String errorPass = (String) request.getAttribute("errorPass");
-                                if (errorUser != null) {
-                            %>
-                            <p><%= errorPass %></p>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-sm-12">
                             <%
+                                if (null != request.getAttribute("emptyPassword")) {
+                                    out.println("<p class=\"bg-danger\">" + request.getAttribute("emptyPassword") + "</p>");
                                 }
                             %>
                         </div>
-
                     </div>
                     <div class="form-group">
                         <label for="fullName" class="col-sm-5 control-label">Full name</label>
@@ -81,16 +80,16 @@
                         <label for="inputEmail3" class="col-sm-5 control-label">Email(*)</label>
                         <div class="col-sm-3">
                             <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email">
-                             <%
-                                String errorMail = (String) request.getAttribute("errorMail");
-                                if (errorMail != null) {
-                            %>
-                            <p><%=errorMail%></p>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-sm-12">
                             <%
+                                if (null != request.getAttribute("emptyEmail")) {
+                                    out.println("<p class=\"bg-danger\">" + request.getAttribute("emptyEmail") + "</p>");
                                 }
                             %>
                         </div>
-
                     </div>
                     <div class="form-group">
                         <label for="gender" class="col-sm-5 control-label">Gender</label>
@@ -100,6 +99,15 @@
                                 <option>Female</option>
                             </select>
 
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-sm-12">
+                            <%
+                                if (null != request.getAttribute("error")) {
+                                    out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
+                                }
+                            %>
                         </div>
                     </div>
                     <div class="form-group">

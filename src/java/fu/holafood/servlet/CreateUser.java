@@ -70,7 +70,7 @@ public class CreateUser extends HttpServlet {
         //check valid userName
         for (int i = 0; i < users.size(); i++) {
             if (userName.equals(users.get(i).getUsername())) {
-                String errorUser = "User is already esixt !!";
+                String errorUser = "User is already exist !!";
                 request.setAttribute("error", errorUser);
                 request.getRequestDispatcher("admin/users/create.jsp").forward(request, response);
                 sent = true;
