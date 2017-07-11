@@ -162,3 +162,135 @@ footer p {
     background-color: #FF773D;
     color: #fff;
 }
+
+/* Main site */
+h2.block-title {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #FF773D;
+}
+
+h2.block-title span {
+    background-color: #FF773D;
+    padding: 10px;
+    color: #fff;
+    font-size: 22px;
+}
+
+.site-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.site-content .list-item {
+    margin-top: 10px;
+}
+
+.site-content .item {
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.site-content .item img {
+    width: 100%;
+}
+
+.site-content .item:hover .item-info {
+    height: 245px;
+    cursor: pointer;
+}
+
+.site-content .item:hover .comment-box {
+    visibility: visible;
+    opacity: 1;
+}
+
+.site-content .item-info {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    right: 5px;
+    height: 90px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    transition: height 0.5s linear;
+}
+
+.site-content .item-info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.site-content .comment-box {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.site-content .comment-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-content .comment-box ul li {
+    padding-top: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #fff;
+}
+
+.site-content .comment-box p {
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+}
+
+.site-content .comment-box img {
+    width: 50px;
+}
+
+.site-content .comment-box .user-avatar {
+    float: left;
+    padding-right: 10px;
+}
+
+.site-content .item-rating {
+    font-size: 12px;
+}
+
+.site-content .item-rating i {
+    color: yellow;
+    font-size: 14px;
+}
+
+.site-content .item-action-box {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.site-content .item-action-box span {
+    margin-right: 12px;
+}
+
+.site-content .bookmark {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.site-content .bookmark button {
+    padding: 3px 10px;
+    border: 0;
+    border-radius: 8px;
+    background-color: #FF773D;
+}
+
+.site-content .bookmark button:hover {
+    background-color: #ff8450;
+}

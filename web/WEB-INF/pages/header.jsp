@@ -9,10 +9,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
         <title>${param.title}</title>
-        <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <!--Bootstrap CSS-->
         <link rel="stylesheet" type="text/css"
               href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <!--FlexSlider-->
         <link rel="stylesheet" type="text/css"
               href="${pageContext.request.contextPath}/assets/css/flexslider.css" />

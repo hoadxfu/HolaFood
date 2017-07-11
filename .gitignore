@@ -23,3 +23,6 @@ hs_err_pid*
 /nbproject/private/
 /build/
 /dist/
+
+# db context
+/src/java/fu/holafood/db/DBContext.java
