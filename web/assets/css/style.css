@@ -4,9 +4,34 @@
  */
 
 body { 
-    padding-top: 50px; 
+    padding-top: 50px;
+    background-color: #f2f2f2;
 }
 
+body::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar
+{
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+    background-color: #F90;	
+    background-image: -webkit-linear-gradient(45deg,
+        rgba(255, 255, 255, .2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, .2) 50%,
+        rgba(255, 255, 255, .2) 75%,
+        transparent 75%,
+        transparent)
+}
 .form-control, .form-group-lg .form-control {
     border-radius: 0;
 }
@@ -22,14 +47,64 @@ body {
 
 /* Footer */
 footer {
-    background-color: #FF773D;
-    color: #fff;
-    padding: 20px;
+    background-color: #fff;
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
+
+.footer-end {
+    background-color: #373941;
+    color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 footer p {
     padding: 0;
     margin: 0;
 }
+
+footer .row {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+footer .item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+footer .item h3 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+footer .item ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+footer .item i {
+    color: #FF773D;
+}
+
+footer .item ul li a {
+    color: #000;
+}
+
+footer .item ul li a:hover {
+    text-decoration: none;
+    color: #FF773D
+}
+
+footer .item ul li {
+    padding: 5px 0;
+}
+
+
 
 /* Login */
 .panel-login {
@@ -166,6 +241,9 @@ footer p {
 /* Main site */
 h2.block-title {
     margin: 0;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
     padding-bottom: 11px;
     border-bottom: 1px solid #FF773D;
 }
@@ -293,4 +371,185 @@ h2.block-title span {
 
 .site-content .bookmark button:hover {
     background-color: #ff8450;
+}
+
+/* Loading Button */
+#fountainG{
+    position:relative;
+    width:60px;
+    height:7px;
+    margin:auto;
+    margin-top: 10px;
+}
+
+.fountainG{
+    position:absolute;
+    top:0;
+    background-color:rgb(0,0,0);
+    width:7px;
+    height:7px;
+    animation-name:bounce_fountainG;
+    -o-animation-name:bounce_fountainG;
+    -ms-animation-name:bounce_fountainG;
+    -webkit-animation-name:bounce_fountainG;
+    -moz-animation-name:bounce_fountainG;
+    animation-duration:0.645s;
+    -o-animation-duration:0.645s;
+    -ms-animation-duration:0.645s;
+    -webkit-animation-duration:0.645s;
+    -moz-animation-duration:0.645s;
+    animation-iteration-count:infinite;
+    -o-animation-iteration-count:infinite;
+    -ms-animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+    -moz-animation-iteration-count:infinite;
+    animation-direction:normal;
+    -o-animation-direction:normal;
+    -ms-animation-direction:normal;
+    -webkit-animation-direction:normal;
+    -moz-animation-direction:normal;
+    transform:scale(.3);
+    -o-transform:scale(.3);
+    -ms-transform:scale(.3);
+    -webkit-transform:scale(.3);
+    -moz-transform:scale(.3);
+    border-radius:5px;
+    -o-border-radius:5px;
+    -ms-border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+}
+
+#fountainG_1{
+    left:0;
+    animation-delay:0.256s;
+    -o-animation-delay:0.256s;
+    -ms-animation-delay:0.256s;
+    -webkit-animation-delay:0.256s;
+    -moz-animation-delay:0.256s;
+}
+
+#fountainG_2{
+    left:7px;
+    animation-delay:0.3225s;
+    -o-animation-delay:0.3225s;
+    -ms-animation-delay:0.3225s;
+    -webkit-animation-delay:0.3225s;
+    -moz-animation-delay:0.3225s;
+}
+
+#fountainG_3{
+    left:15px;
+    animation-delay:0.389s;
+    -o-animation-delay:0.389s;
+    -ms-animation-delay:0.389s;
+    -webkit-animation-delay:0.389s;
+    -moz-animation-delay:0.389s;
+}
+
+#fountainG_4{
+    left:22px;
+    animation-delay:0.4555s;
+    -o-animation-delay:0.4555s;
+    -ms-animation-delay:0.4555s;
+    -webkit-animation-delay:0.4555s;
+    -moz-animation-delay:0.4555s;
+}
+
+#fountainG_5{
+    left:30px;
+    animation-delay:0.522s;
+    -o-animation-delay:0.522s;
+    -ms-animation-delay:0.522s;
+    -webkit-animation-delay:0.522s;
+    -moz-animation-delay:0.522s;
+}
+
+#fountainG_6{
+    left:37px;
+    animation-delay:0.5885s;
+    -o-animation-delay:0.5885s;
+    -ms-animation-delay:0.5885s;
+    -webkit-animation-delay:0.5885s;
+    -moz-animation-delay:0.5885s;
+}
+
+#fountainG_7{
+    left:45px;
+    animation-delay:0.645s;
+    -o-animation-delay:0.645s;
+    -ms-animation-delay:0.645s;
+    -webkit-animation-delay:0.645s;
+    -moz-animation-delay:0.645s;
+}
+
+#fountainG_8{
+    left:52px;
+    animation-delay:0.7115s;
+    -o-animation-delay:0.7115s;
+    -ms-animation-delay:0.7115s;
+    -webkit-animation-delay:0.7115s;
+    -moz-animation-delay:0.7115s;
+}
+
+
+
+@keyframes bounce_fountainG{
+    0%{
+        transform:scale(1);
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        transform:scale(.3);
+        background-color:rgb(255,255,255);
+    }
+}
+
+@-o-keyframes bounce_fountainG{
+    0%{
+        -o-transform:scale(1);
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        -o-transform:scale(.3);
+        background-color:rgb(255,255,255);
+    }
+}
+
+@-ms-keyframes bounce_fountainG{
+    0%{
+        -ms-transform:scale(1);
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        -ms-transform:scale(.3);
+        background-color:rgb(255,255,255);
+    }
+}
+
+@-webkit-keyframes bounce_fountainG{
+    0%{
+        -webkit-transform:scale(1);
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        -webkit-transform:scale(.3);
+        background-color:rgb(255,255,255);
+    }
+}
+
+@-moz-keyframes bounce_fountainG{
+    0%{
+        -moz-transform:scale(1);
+        background-color:rgb(0,0,0);
+    }
+
+    100%{
+        -moz-transform:scale(.3);
+        background-color:rgb(255,255,255);
+    }
 }

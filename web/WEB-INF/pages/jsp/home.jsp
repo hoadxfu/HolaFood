@@ -92,10 +92,10 @@
 <!-- Content of Website in here -->
 <div class="container">
     <main class="site-content">
-        <h2 class="block-title">
-            <span>Hôm nay ăn gì?</span>
-        </h2>
-        <section class="list-item">
+        <section class="list-item row">
+            <h2 class="block-title">
+                <span>Hôm nay ăn gì?</span>
+            </h2>
             <div class="col-md-4 item">
                 <div class="feature-img">
                     <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
@@ -463,6 +463,16 @@
                 </div>
             </div><!--/.end item -->
             <div class="clearfix"></div>
+            <div id="fountainG">
+                <div id="fountainG_1" class="fountainG"></div>
+                <div id="fountainG_2" class="fountainG"></div>
+                <div id="fountainG_3" class="fountainG"></div>
+                <div id="fountainG_4" class="fountainG"></div>
+                <div id="fountainG_5" class="fountainG"></div>
+                <div id="fountainG_6" class="fountainG"></div>
+                <div id="fountainG_7" class="fountainG"></div>
+                <div id="fountainG_8" class="fountainG"></div>
+            </div>
         </section>
     </main><!--/. end site-content -->
 </div>
