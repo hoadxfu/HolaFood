@@ -7,6 +7,7 @@ package fu.holafood.model;
 
 import fu.holafood.db.DBContext;
 import fu.holafood.entity.PermissionGroup;
+import fu.holafood.entity.Product;
 import fu.holafood.entity.User;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -44,6 +45,22 @@ public class UserModel extends DBContext {
             ));
         }
         return users;
+    }
+    
+    public ArrayList<Product> getProducts() throws Exception{
+        ArrayList<Product> products = new ArrayList<>();
+        String sql = "select * from products";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            products.add(new Product(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getTimestamp(5),
+                    rs.getTimestamp(6)));
+        }
+        return products;
     }
 
     public int addUsers(String userName, String password, String email, String fullName, int permi, int gender, Date dob, Timestamp created_at) throws Exception {
@@ -119,11 +136,68 @@ public class UserModel extends DBContext {
         return ps.executeUpdate();
     }
     
+    public User getUserById(int userId) throws Exception {
+        String sql = "select * from users u inner join permission_groups permi_gr on u.permi = permi_gr.id where u.id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setInt(1, userId);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            return new User(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(11),
+                    rs.getInt(7) == 1 ? "Male" : "Female",
+                    rs.getDate(8),
+                    rs.getTimestamp(9)
+            );
+        }
+        return null;
+    }
+    
     public int deleteUser(int userId) throws Exception{
         String sql = "delete from users where id = ?";
         PreparedStatement ps = getConnection().prepareCall(sql);
         ps.setInt(1, userId);
         return ps.executeUpdate();
     }
+    
+    public int updateUser(int userId, String newPassword, String newEmail, String newFullName, int newGender, Date newDob) throws Exception {
+        String sql = "update Users set password = ?, email = ?, fullname = ?, gender = ?, dob = ? where id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setString(1, newPassword);
+        ps.setString(2, newEmail);
+        ps.setString(3, newFullName);
+        ps.setInt(4, newGender);
+        ps.setDate(5, newDob);
+        ps.setInt(6, userId);
+        return ps.executeUpdate();
+    }
+    
+    public int deleteProduct(int productId) throws Exception{
+        String sql = "delete from products where id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setInt(1, productId);
+        return ps.executeUpdate();
+    }
+    
+    public Product getProductById(int productId) throws Exception {
+        String sql = "select * from products p where p.id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setInt(1, productId);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            return new Product(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getTimestamp(5),
+                    rs.getTimestamp(6));
+        }
+        return null;
+    }
+    
+    
     
 }

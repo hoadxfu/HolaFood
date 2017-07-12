@@ -1,3 +1,4 @@
+<%@page import="fu.holafood.entity.UserInforUpdate"%>
 <%@page import="java.util.List"%>
 <%@page import="fu.holafood.entity.User"%>
 <%@page import="fu.holafood.model.UserModel"%>
@@ -36,6 +37,54 @@
         }
     }
 </script>
+
+<%
+    UserInforUpdate userUpdate = (UserInforUpdate) request.getAttribute("userUpdate");
+    if (userUpdate != null) {
+%>
+<form id='updateActionForm' action="${pageContext.request.contextPath}/UserListActionUpdate" method="POST">
+    <!-- /.box-header -->
+    <div class="box-body table-responsive no-padding">
+        <input type="hidden" name="userId" value="<%=userUpdate.getId()%>">
+        <table class="table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>password</th>
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>Gender</th>
+                <th>Dob</th>
+            </tr>
+            <tr>
+                <td><%=userUpdate.getId()%></td>
+                <td><input type="password" name="newPassword" placeholder="new password"></input></td>
+                <td>
+                    <div>
+                        <label for="inputEmail3" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input type="email" name="newEmail" placeholder="<%=userUpdate.getEmail()%>"/>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="text" name="newFullName" placeholder="<%=userUpdate.getFullname()%>"></input></td>
+                <td><select name="newGender" id="newGender">
+                        <option value="Male" <%=userUpdate.getGender().equalsIgnoreCase("Male") ? "selected" : ""%>>Male</option>
+                        <option value="Female" <%=userUpdate.getGender().equalsIgnoreCase("Female") ? "selected" : ""%>>Female</option>
+                    </select></input></td>
+                <td><input type="date" name="newDob" value="<%= userUpdate.getDob()%>"></input></td>
+            </tr>
+        </table>
+        <div class="box-footer">
+            <input class="btn btn-info pull-right" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/users/list.jsp';" value="Cancel" />
+            <button type="submit" class="btn btn-info pull-right">Update</button>
+        </div>
+    </div>
+    <!-- /.box-body -->
+</form>
+
+<%
+    }
+%>
 
 <!-- Main content -->
 <section class="content">

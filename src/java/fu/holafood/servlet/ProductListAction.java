@@ -4,10 +4,10 @@
  */
 package fu.holafood.servlet;
 
-import fu.holafood.entity.UserInforUpdate;
-import fu.holafood.entity.User;
+import fu.holafood.entity.Product;
 import fu.holafood.model.UserModel;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NhocNho
  */
-@WebServlet(name = "UserListAction", urlPatterns = {"/UserListAction"})
-public class UserListAction extends HttpServlet {
+@WebServlet(name = "ProductListAction", urlPatterns = {"/ProductListAction"})
+public class ProductListAction extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,37 +35,39 @@ public class UserListAction extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        UserModel um = new UserModel();
         boolean sent = false;
+        UserModel um = new UserModel();
         String deleteAction = request.getParameter("deleteAction");
         String updateAction = request.getParameter("updateAction");
+        
         //delete
         if (!deleteAction.equals("") && updateAction.equals("")) {
             int index = Integer.parseInt(deleteAction);
-            if (um.deleteUser(index) != 0) {
+            if (um.deleteProduct(index) != 0) {
                 request.setAttribute("success", "Deleted successfully");
-                request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
+                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "Cannot delete");
-                request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
+                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
             }
             sent = true;
 
         } else if (deleteAction.equals("") && !updateAction.equals("")) { //update
-            int index = Integer.parseInt(updateAction);
-            User u = um.getUserById(index);
-            if (u != null) {
-                UserInforUpdate userUpdate = new UserInforUpdate(u.getId(), u.getPassword(), u.getEmail(), u.getFullname(), u.getGender(), u.getDob());
-                request.setAttribute("userUpdate", userUpdate);
-                request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
-            } else {
-                request.setAttribute("error", "Cannot update");
-                request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
-            }
-            sent = true;
+//            int index = Integer.parseInt(updateAction);
+//            Product p = um.getProductById(index);
+//            if (p != null) {
+//                Product productUpdate = new UserInforUpdate(u.getId(), u.getPassword(), u.getEmail(), u.getFullname(), u.getGender(), u.getDob());
+//                request.setAttribute("productUpdate", productUpdate);
+//                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+//            } else {
+//                request.setAttribute("error", "Cannot update");
+//                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+//            }
+//            sent = true;
         }
+        
         if (!sent) {
-            response.sendRedirect("admin/users/list.jsp");
+            response.sendRedirect("admin/products/list.jsp");
         }
     }
 
@@ -84,7 +86,7 @@ public class UserListAction extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UserListAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductListAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -102,7 +104,7 @@ public class UserListAction extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UserListAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductListAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -4,10 +4,14 @@
  */
 package fu.holafood.servlet;
 
-import fu.holafood.entity.UserInforUpdate;
+import fu.holafood.controller.UserController;
 import fu.holafood.entity.User;
 import fu.holafood.model.UserModel;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NhocNho
  */
-@WebServlet(name = "UserListAction", urlPatterns = {"/UserListAction"})
-public class UserListAction extends HttpServlet {
+@WebServlet(name = "UserListActionUpdate", urlPatterns = {"/UserListActionUpdate"})
+public class UserListActionUpdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,36 +40,55 @@ public class UserListAction extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         UserModel um = new UserModel();
-        boolean sent = false;
-        String deleteAction = request.getParameter("deleteAction");
-        String updateAction = request.getParameter("updateAction");
-        //delete
-        if (!deleteAction.equals("") && updateAction.equals("")) {
-            int index = Integer.parseInt(deleteAction);
-            if (um.deleteUser(index) != 0) {
-                request.setAttribute("success", "Deleted successfully");
-                request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
-            } else {
-                request.setAttribute("error", "Cannot delete");
-                request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
-            }
-            sent = true;
-
-        } else if (deleteAction.equals("") && !updateAction.equals("")) { //update
-            int index = Integer.parseInt(updateAction);
-            User u = um.getUserById(index);
-            if (u != null) {
-                UserInforUpdate userUpdate = new UserInforUpdate(u.getId(), u.getPassword(), u.getEmail(), u.getFullname(), u.getGender(), u.getDob());
-                request.setAttribute("userUpdate", userUpdate);
-                request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
-            } else {
-                request.setAttribute("error", "Cannot update");
-                request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
-            }
-            sent = true;
+        UserController uc = new UserController();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        User u = um.getUserById(userId);
+        String newPassword = request.getParameter("newPassword");
+        String newEmail = request.getParameter("newEmail");
+        String newFullName = request.getParameter("newFullName");
+        int newGender = request.getParameter("newGender").equalsIgnoreCase("Male") ? 1 : 0;
+        String newDob = request.getParameter("newDob");
+        java.sql.Date dobDate;
+        if (!newDob.equals("")) {
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = df.parse(newDob);
+            dobDate = new java.sql.Date(date.getTime());
+        } else {
+            dobDate = u.getDob();
         }
-        if (!sent) {
-            response.sendRedirect("admin/users/list.jsp");
+        String password;
+        String fullName;
+        String email;
+
+        if (!newPassword.equals("")) {
+            newPassword = uc.encryption(newPassword);
+            if (!newPassword.equals(u.getPassword())) {
+                password = newPassword;
+            } else {
+                password = u.getPassword();
+            }
+        } else {
+            password = u.getPassword();
+        }
+
+        if (!newFullName.equals("") && !newFullName.equals(u.getFullname())) {
+            fullName = newFullName;
+        } else {
+            fullName = u.getFullname();
+        }
+
+        if (!newEmail.equals("") && !newEmail.equalsIgnoreCase(u.getEmail())) {
+            email = newEmail;
+        } else {
+            email = u.getEmail();
+        }
+
+        if (um.updateUser(userId, password, email, fullName, newGender, dobDate) != 0) {
+            request.setAttribute("success", "Updated successfully");
+            request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
+        } else {
+            request.setAttribute("error", "Cannot update");
+            request.getRequestDispatcher("admin/users/list.jsp").forward(request, response);
         }
     }
 
@@ -84,7 +107,7 @@ public class UserListAction extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UserListAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserListActionUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -102,7 +125,7 @@ public class UserListAction extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(UserListAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserListActionUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
