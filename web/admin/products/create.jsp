@@ -40,8 +40,9 @@
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <input type="text" class="form-control" placeholder="" name="description">
+                    <textarea name="description" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
+
                 <div class="form-group text-center">
                     <div class="col-sm-12">
                         <%
@@ -60,8 +61,12 @@
                 <!-- /.box-footer -->
             </form>
         </div>
-        <!-- /.box-body -->
     </div>
 </section>
 
 <jsp:include page="/WEB-INF/pages/admin/footer.jsp"/>
+<script>
+    $(function () {
+        $(".textarea").wysihtml5();
+    });
+</script>

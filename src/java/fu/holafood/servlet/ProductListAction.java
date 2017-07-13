@@ -53,17 +53,16 @@ public class ProductListAction extends HttpServlet {
             sent = true;
 
         } else if (deleteAction.equals("") && !updateAction.equals("")) { //update
-//            int index = Integer.parseInt(updateAction);
-//            Product p = um.getProductById(index);
-//            if (p != null) {
-//                Product productUpdate = new UserInforUpdate(u.getId(), u.getPassword(), u.getEmail(), u.getFullname(), u.getGender(), u.getDob());
-//                request.setAttribute("productUpdate", productUpdate);
-//                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
-//            } else {
-//                request.setAttribute("error", "Cannot update");
-//                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
-//            }
-//            sent = true;
+            int index = Integer.parseInt(updateAction);
+            Product p = um.getProductById(index);
+            if (p != null) {
+                request.setAttribute("productUpdate", p);
+                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+            } else {
+                request.setAttribute("error", "Cannot update");
+                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+            }
+            sent = true;
         }
         
         if (!sent) {

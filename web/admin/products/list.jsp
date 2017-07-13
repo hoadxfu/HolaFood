@@ -24,7 +24,7 @@
 </jsp:include>
 
 <script>
-    function getUserId(userId, buttonName) {
+    function getProductId(userId, buttonName) {
         if (buttonName === "deleteButton") {
             var bool = confirm("Do you really want to delete?");
             if (bool) {
@@ -37,6 +37,14 @@
         }
     }
 </script>
+
+<%
+    Product p = (Product) request.getAttribute("productUpdate");
+    if (p != null) {
+%>
+<%
+    }
+%>
 
 <!-- Main content -->
 <section class="content">
@@ -89,18 +97,18 @@
                             try {
                                 List<Product> list = um.getProducts();
                                 for (int i = 0; i < list.size(); i++) {
-                                    Product p = list.get(i);
+                                    Product pro = list.get(i);
                         %>
                         <tr>
-                            <td><%=p.getId()%></td>
-                            <td><%=p.getName()%></td>
-                            <td><%=p.getSlug()%></td>
-                            <td><%=p.getDescription()%></td>
-                            <td><%=p.getCreatedAt()%></td>
-                            <td><%=p.getUpdatedAt()%></td>
+                            <td><%=pro.getId()%></td>
+                            <td><%=pro.getName()%></td>
+                            <td><%=pro.getSlug()%></td>
+                            <td><%=pro.getDescription()%></td>
+                            <td><%=pro.getCreatedAt()%></td>
+                            <td><%=pro.getUpdatedAt()%></td>
                             <td>
-                                <input type="button" value="Delete" onclick="getUserId(<%=p.getId()%>, 'deleteButton')">
-                                <input type="button" value="Update" onclick="getUserId(<%=p.getId()%>, 'updateButton')">
+                                <input type="button" value="Delete" onclick="getProductId(<%=pro.getId()%>, 'deleteButton')">
+                                <input type="button" value="Update" onclick="getProductId(<%=pro.getId()%>, 'updateButton')">
                             </td>
                         </tr>
                         <%

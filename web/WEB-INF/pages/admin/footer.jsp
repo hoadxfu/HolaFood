@@ -27,5 +27,6 @@
 <script src="${pageContext.request.contextPath}/admin/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="${pageContext.request.contextPath}/admin/assets/plugins/chartjs/Chart.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 </body>
 </html>
