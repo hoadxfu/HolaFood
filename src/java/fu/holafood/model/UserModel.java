@@ -198,6 +198,16 @@ public class UserModel extends DBContext {
         return null;
     }
     
-    
+    public int updateProduct(int id, String name, String slug, String des, Timestamp createAt, Timestamp updateAt) throws Exception {
+        String sql = "update Products set name = ?, slug = ?, description = ?, created_at = ?, updated_at = ? where id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setString(1, name);
+        ps.setString(2, slug);
+        ps.setString(3, des);
+        ps.setTimestamp(4, createAt);
+        ps.setTimestamp(5, updateAt);
+        ps.setInt(6, id);
+        return ps.executeUpdate();
+    }
     
 }
