@@ -6,6 +6,7 @@
 package fu.holafood.model;
 
 import fu.holafood.db.DBContext;
+import fu.holafood.entity.Category;
 import fu.holafood.entity.PermissionGroup;
 import fu.holafood.entity.Product;
 import fu.holafood.entity.User;
@@ -46,8 +47,8 @@ public class UserModel extends DBContext {
         }
         return users;
     }
-    
-    public ArrayList<Product> getProducts() throws Exception{
+
+    public ArrayList<Product> getProducts() throws Exception {
         ArrayList<Product> products = new ArrayList<>();
         String sql = "select * from products";
         PreparedStatement ps = getConnection().prepareCall(sql);
@@ -124,7 +125,7 @@ public class UserModel extends DBContext {
         }
         return permissionGroups;
     }
-    
+
     public int AddProduct(String name, String slug, String des, Timestamp createAt, Timestamp updateAt) throws Exception {
         String sql = "insert into products(name, slug, description, created_at, updated_at) values(?, ?, ?, ?, ?)";
         PreparedStatement ps = getConnection().prepareCall(sql);
@@ -135,7 +136,7 @@ public class UserModel extends DBContext {
         ps.setTimestamp(5, updateAt);
         return ps.executeUpdate();
     }
-    
+
     public User getUserById(int userId) throws Exception {
         String sql = "select * from users u inner join permission_groups permi_gr on u.permi = permi_gr.id where u.id = ?";
         PreparedStatement ps = getConnection().prepareCall(sql);
@@ -155,14 +156,41 @@ public class UserModel extends DBContext {
         }
         return null;
     }
-    
-    public int deleteUser(int userId) throws Exception{
+
+    public ArrayList<Category> getCategory() throws Exception {
+        ArrayList<Category> categories = new ArrayList<>();
+        String sql = "select * from categories";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            categories.add(new Category(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getTimestamp(6), rs.getTimestamp(7)));
+        }
+        return categories;
+    }
+
+    public int addCategory(int pid, String slug, String name, String des, Timestamp createAt, Timestamp updateAt) throws Exception {
+
+        
+            String sql = "insert into categories(pid, slug, name, description, created_at, updated_at) values(?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = getConnection().prepareCall(sql);
+            ps.setInt(1, pid);
+            ps.setString(2, slug);
+            ps.setString(3, name);
+            ps.setString(4, des);
+            ps.setTimestamp(5, createAt);
+            ps.setTimestamp(6, updateAt);
+            return ps.executeUpdate();
+       
+
+    }
+
+    public int deleteUser(int userId) throws Exception {
         String sql = "delete from users where id = ?";
         PreparedStatement ps = getConnection().prepareCall(sql);
         ps.setInt(1, userId);
         return ps.executeUpdate();
     }
-    
+
     public int updateUser(int userId, String newPassword, String newEmail, String newFullName, int newGender, Date newDob) throws Exception {
         String sql = "update Users set password = ?, email = ?, fullname = ?, gender = ?, dob = ? where id = ?";
         PreparedStatement ps = getConnection().prepareCall(sql);
@@ -174,14 +202,21 @@ public class UserModel extends DBContext {
         ps.setInt(6, userId);
         return ps.executeUpdate();
     }
-    
-    public int deleteProduct(int productId) throws Exception{
+
+    public int deleteProduct(int productId) throws Exception {
         String sql = "delete from products where id = ?";
         PreparedStatement ps = getConnection().prepareCall(sql);
         ps.setInt(1, productId);
         return ps.executeUpdate();
     }
     
+    public int deleteCategory(int categoryId) throws Exception {
+        String sql = "delete from categories where id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setInt(1, categoryId);
+        return ps.executeUpdate();
+    }
+
     public Product getProductById(int productId) throws Exception {
         String sql = "select * from products p where p.id = ?";
         PreparedStatement ps = getConnection().prepareCall(sql);
@@ -198,6 +233,17 @@ public class UserModel extends DBContext {
         return null;
     }
     
+     public Category getCategoryById(int categoryId) throws Exception {
+        String sql = "select * from categories p where p.id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setInt(1, categoryId);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            return new Category(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getTimestamp(6), rs.getTimestamp(7));
+        }
+        return null;
+    }
+
     public int updateProduct(int id, String name, String slug, String des, Timestamp createAt, Timestamp updateAt) throws Exception {
         String sql = "update Products set name = ?, slug = ?, description = ?, created_at = ?, updated_at = ? where id = ?";
         PreparedStatement ps = getConnection().prepareCall(sql);
@@ -210,4 +256,17 @@ public class UserModel extends DBContext {
         return ps.executeUpdate();
     }
     
+    public int updateCategory(int id,int p_id, String name, String slug, String des, Timestamp createAt, Timestamp updateAt) throws Exception {
+        String sql = "update categories set pid = ?, name = ?, slug = ?, description = ?, created_at = ?, updated_at = ? where id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setInt(1, p_id);
+        ps.setString(2, name);
+        ps.setString(3, slug);
+        ps.setString(4, des);
+        ps.setTimestamp(5, createAt);
+        ps.setTimestamp(6, updateAt);
+        ps.setInt(7, id);
+        return ps.executeUpdate();
+    }
+
 }

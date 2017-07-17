@@ -4,9 +4,33 @@
         <servlet-name>AddUser</servlet-name>
         <servlet-class>fu.holafood.servlet.AddUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateCategory</servlet-name>
+        <servlet-class>fu.holafood.servlet.CreateCategory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoryListAction</servlet-name>
+        <servlet-class>fu.holafood.servlet.CategoryListAction</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoryListActionUpdate</servlet-name>
+        <servlet-class>fu.holafood.servlet.CategoryListActionUpdate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddUser</servlet-name>
         <url-pattern>/AddUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateCategory</servlet-name>
+        <url-pattern>/CreateCategory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryListAction</servlet-name>
+        <url-pattern>/CategoryListAction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoryListActionUpdate</servlet-name>
+        <url-pattern>/CategoryListActionUpdate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -30,5 +54,4 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-
 </web-app>
