@@ -55,8 +55,12 @@ footer {
 .footer-end {
     background-color: #373941;
     color: #fff;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px 0px;
+}
+
+.footer-end .footer-text {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 footer p {
@@ -65,8 +69,6 @@ footer p {
 }
 
 footer .row {
-    margin-left: -20px;
-    margin-right: -20px;
 }
 
 footer .item {
@@ -262,11 +264,14 @@ h2.block-title span {
 
 .site-content .list-item {
     margin-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .site-content .item {
     padding-left: 5px;
     padding-right: 5px;
+    height: 250px;
     overflow: hidden;
     margin-bottom: 10px;
 }
@@ -276,7 +281,7 @@ h2.block-title span {
 }
 
 .site-content .item:hover .item-info {
-    height: 245px;
+    height: 250px;
     cursor: pointer;
 }
 
@@ -552,4 +557,157 @@ h2.block-title span {
         -moz-transform:scale(.3);
         background-color:rgb(255,255,255);
     }
+}
+
+/* Product Detail */
+.product {
+    padding: 60px 10px 20px 10px;
+}
+
+.product .product-feature {
+    background-color: #fff;
+}
+
+.product-feature .feature-img {
+    padding: 0;
+}
+
+.product-feature .feature-img img {
+    width: 100%;
+}
+
+.product-feature .product-info h1 {
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.product-info p {
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.product-info .item-rating span {
+    font-size: 12px;
+}
+
+.product-info i {
+    color: #FF773D;
+    font-size: 14px;
+}
+
+.product-info .bookmark {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.product-info .bookmark i {
+    color: #fff;
+}
+
+.product-info .bookmark button {
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 50%;
+    background-color: #FF773D;
+}
+
+.product-content {
+    padding-bottom: 60px;
+}
+
+/* Review */
+.review {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.review .review-container {
+    padding: 15px;
+    background-color: #fff;
+}
+
+.review h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.review form {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.review .rating {
+    margin-bottom: 5px;
+}
+
+.review .rating i {
+    font-size: 16px;
+    color: #FF773D;
+}
+
+.review .review-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.review .review-list li {
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.review .review-list li:last-child {
+    border: none;
+}
+
+.review-list li .user-avatar {
+    float: left;
+}
+
+.review-list li .user-avatar img {
+    border-radius: 50%;
+    width: 75px;
+    margin-right: 15px;
+}
+
+/* Related */
+.related {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.related .related-container {
+    padding: 15px;
+    background-color: #fff;
+}
+
+.related h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.related ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.related li {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.related li:last-child {
+    padding-bottom: 0;
+    border: none;
+}
+
+.related li img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 15px;
 }

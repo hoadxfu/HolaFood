@@ -1,6 +1,7 @@
 <jsp:include page="/WEB-INF/pages/header.jsp">
     <jsp:param name="title" value="HolaFood Homepage"/>
 </jsp:include>
+<%@ taglib uri="/struts-tags" prefix="s" %>  
 
 <!-- filter box -->
 <div class="filter-box">
@@ -96,372 +97,71 @@
             <h2 class="block-title">
                 <span>Hôm nay ăn gì?</span>
             </h2>
-            <div class="col-md-4 item">
-                <div class="feature-img">
-                    <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">Tên đồ ăn</h3>
-                    <div class="item-rating">
-                        <span>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </span>
-                        <span> 102 lượt</span>
-                    </div>
-                    <div class="comment-box">
-                        <ul>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar2.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>Ms Nobody</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar5.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>hoadx</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-action-box">
-                        <span class="checked-in">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i> 69
-                        </span>
-                        <span class="review">
-                            <i class="fa fa-comments" aria-hidden="true"></i> 96
-                        </span>
-                    </div>
-                    <div class="bookmark">
-                        <button>
-                            <i class="fa fa-bookmark" aria-hidden="true"></i> Lưu
-                        </button>
-                    </div>
-                </div>
-            </div><!--/.end item -->
-            <div class="col-md-4 item">
-                <div class="feature-img">
-                    <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">Tên đồ ăn</h3>
-                    <div class="item-rating">
-                        <span>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </span>
-                        <span> 102 lượt</span>
-                    </div>
-                    <div class="comment-box">
-                        <ul>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar2.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>Ms Nobody</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar5.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>hoadx</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-action-box">
-                        <span class="checked-in">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i> 69
-                        </span>
-                        <span class="review">
-                            <i class="fa fa-comments" aria-hidden="true"></i> 96
-                        </span>
-                    </div>
-                    <div class="bookmark">
-                        <button>
-                            <i class="fa fa-bookmark" aria-hidden="true"></i> Lưu
-                        </button>
-                    </div>
-                </div>
-            </div><!--/.end item -->
-            <div class="col-md-4 item">
-                <div class="feature-img">
-                    <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">Tên đồ ăn</h3>
-                    <div class="item-rating">
-                        <span>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </span>
-                        <span> 102 lượt</span>
-                    </div>
-                    <div class="comment-box">
-                        <ul>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar2.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>Ms Nobody</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar5.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>hoadx</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-action-box">
-                        <span class="checked-in">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i> 69
-                        </span>
-                        <span class="review">
-                            <i class="fa fa-comments" aria-hidden="true"></i> 96
-                        </span>
-                    </div>
-                    <div class="bookmark">
-                        <button>
-                            <i class="fa fa-bookmark" aria-hidden="true"></i> Lưu
-                        </button>
-                    </div>
-                </div>
-            </div><!--/.end item -->
-            <div class="col-md-4 item">
-                <div class="feature-img">
-                    <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">Tên đồ ăn</h3>
-                    <div class="item-rating">
-                        <span>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </span>
-                        <span> 102 lượt</span>
-                    </div>
-                    <div class="comment-box">
-                        <ul>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar2.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>Ms Nobody</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar5.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>hoadx</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-action-box">
-                        <span class="checked-in">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i> 69
-                        </span>
-                        <span class="review">
-                            <i class="fa fa-comments" aria-hidden="true"></i> 96
-                        </span>
-                    </div>
-                    <div class="bookmark">
-                        <button>
-                            <i class="fa fa-bookmark" aria-hidden="true"></i> Lưu
-                        </button>
-                    </div>
-                </div>
-            </div><!--/.end item -->
-            <div class="col-md-4 item">
-                <div class="feature-img">
-                    <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">Tên đồ ăn</h3>
-                    <div class="item-rating">
-                        <span>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </span>
-                        <span> 102 lượt</span>
-                    </div>
-                    <div class="comment-box">
-                        <ul>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar2.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>Ms Nobody</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar5.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>hoadx</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-action-box">
-                        <span class="checked-in">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i> 69
-                        </span>
-                        <span class="review">
-                            <i class="fa fa-comments" aria-hidden="true"></i> 96
-                        </span>
-                    </div>
-                    <div class="bookmark">
-                        <button>
-                            <i class="fa fa-bookmark" aria-hidden="true"></i> Lưu
-                        </button>
-                    </div>
-                </div>
-            </div><!--/.end item -->
-            <div class="col-md-4 item">
-                <div class="feature-img">
-                    <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
-                </div>
-                <div class="item-info">
-                    <h3 class="item-name">Tên đồ ăn</h3>
-                    <div class="item-rating">
-                        <span>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </span>
-                        <span> 102 lượt</span>
-                    </div>
-                    <div class="comment-box">
-                        <ul>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar2.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>Ms Nobody</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="user-avatar">
-                                    <img src="admin/assets/img/avatar5.png" alt=""/>
-                                </div>
-                                <div class="user-info">
-                                    <span class="username">
-                                        <strong>hoadx</strong>
-                                    </span>
-                                    <p class="user-review">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-action-box">
-                        <span class="checked-in">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i> 69
-                        </span>
-                        <span class="review">
-                            <i class="fa fa-comments" aria-hidden="true"></i> 96
-                        </span>
-                    </div>
-                    <div class="bookmark">
-                        <button>
-                            <i class="fa fa-bookmark" aria-hidden="true"></i> Lưu
-                        </button>
-                    </div>
-                </div>
-            </div><!--/.end item -->
+            <s:iterator value="products">
+                <a href="product.html?id=<s:property value="id"/>">
+                    <div class="col-md-4 item">
+                        <div class="feature-img">
+                            <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
+                        </div>
+                        <div class="item-info">
+                            <h3 class="item-name"><s:property value="name"/></h3>
+                            <div class="item-rating">
+                                <span>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </span>
+                                <span> 102 lượt</span>
+                            </div>
+                            <div class="comment-box">
+                                <ul>
+                                    <li>
+                                        <div class="user-avatar">
+                                            <img src="admin/assets/img/avatar2.png" alt=""/>
+                                        </div>
+                                        <div class="user-info">
+                                            <span class="username">
+                                                <strong>Ms Nobody</strong>
+                                            </span>
+                                            <p class="user-review">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="user-avatar">
+                                            <img src="admin/assets/img/avatar5.png" alt=""/>
+                                        </div>
+                                        <div class="user-info">
+                                            <span class="username">
+                                                <strong>hoadx</strong>
+                                            </span>
+                                            <p class="user-review">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="item-action-box">
+                                <span class="checked-in">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i> 69
+                                </span>
+                                <span class="review">
+                                    <i class="fa fa-comments" aria-hidden="true"></i> 96
+                                </span>
+                            </div>
+                            <div class="bookmark">
+                                <button>
+                                    <i class="fa fa-bookmark" aria-hidden="true"></i> Lưu
+                                </button>
+                            </div>
+                        </div>
+                    </div><!--/.end item -->
+                </a>
+            </s:iterator>
             <div class="clearfix"></div>
             <div id="fountainG">
                 <div id="fountainG_1" class="fountainG"></div>

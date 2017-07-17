@@ -54,7 +54,9 @@
 <div class="footer-end">
     <div class="container">
         <div class="row">
-            Copyright 2017 HolaFood
+            <div class="col-md-12 footer-text">
+                Copyright 2017 HolaFood
+            </div>
         </div>
     </div>
 </div>
