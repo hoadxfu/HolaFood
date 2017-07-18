@@ -67,6 +67,18 @@
                     <li class="<%= (name.equals("category_create")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/category/create.jsp"><i class="fa fa-circle-o"></i> Create New Category</a></li>
                 </ul>
             </li>
+             <li class="<%= (name.equals("Rating") || name.contains("Rating_")) ? "active" : ""%> treeview">
+                <a href="#">
+                    <i class="fa fa-birthday-cake"></i> <span>Rating Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="<%= (name.equals("Rating_list")) ? "active" : ""%>"><a href="${pageContext.request.contextPath}/admin/ratting/list.jsp"><i class="fa fa-circle-o"></i> List Ratings</a></li>
+                    
+                </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
