@@ -48,16 +48,16 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        
+
         <form action="${pageContext.request.contextPath}/ProductListActionUpdate" method="POST">
             <input type="hidden" name="productId" value="<%=p.getId()%>">
             <div class="form-group">
                 <label>Product Name: </label>
-                <input type="text" class="form-control" placeholder="<%=p.getName()%>" name="newProductName">
+                <input id="newProductName" type="text" class="form-control" placeholder="" name="newProductName">
             </div>
             <div class="form-group">
                 <label>Slug: </label>
-                <input type="text" class="form-control" placeholder="<%=p.getSlug()%>" name="newSlug">
+                <input id="newSlug" type="text" class="form-control" placeholder="" name="newSlug">
             </div>
             <div class="form-group">
                 <label>Description</label>
@@ -84,6 +84,11 @@
         </form>
     </div>
 </div>
+<script>
+    document.getElementById('newProductName').value = '<%=p.getName()%>';
+    document.getElementById('newSlug').value= '<%=p.getSlug()%>';
+    document.getElementById('destext').value = '<%=p.getDescription()%>';
+</script>
 <%
     }
 %>
@@ -130,7 +135,6 @@
                             <th>ID</th>
                             <th>Product Name</th>
                             <th>Slug</th>
-                            <th>Description</th>
                             <th>Created At</th>
                             <th>Updated At</th>
                             <th>Action</th>
@@ -145,7 +149,6 @@
                             <td><%=pro.getId()%></td>
                             <td><%=pro.getName()%></td>
                             <td><%=pro.getSlug()%></td>
-                            <td><%=pro.getDescription()%></td>
                             <td><%=pro.getCreatedAt()%></td>
                             <td><%=pro.getUpdatedAt()%></td>
                             <td>
@@ -171,6 +174,6 @@
 <jsp:include page="/WEB-INF/pages/admin/footer.jsp"/>
 <script>
     $(function () {
-        $(".textarea").wysihtml5();
+        $("#destext").wysihtml5();
     });
 </script>

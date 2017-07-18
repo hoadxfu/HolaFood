@@ -57,16 +57,16 @@
             </tr>
             <tr>
                 <td><%=userUpdate.getId()%></td>
-                <td><input type="password" name="newPassword" placeholder="new password"></input></td>
+                <td><input type="password" name="newPassword" placeholder=""></input></td>
                 <td>
                     <div>
                         <label for="inputEmail3" class="col-sm-2 control-label"></label>
                         <div class="col-sm-10">
-                            <input type="email" name="newEmail" placeholder="<%=userUpdate.getEmail()%>"/>
+                            <input  type="email" name="newEmail" value="<%=userUpdate.getEmail()%>"/>
                         </div>
                     </div>
                 </td>
-                <td><input type="text" name="newFullName" placeholder="<%=userUpdate.getFullname()%>"></input></td>
+                <td><input type="text" name="newFullName" value="<%=userUpdate.getFullname()%>"></input></td>
                 <td><select name="newGender" id="newGender">
                         <option value="Male" <%=userUpdate.getGender().equalsIgnoreCase("Male") ? "selected" : ""%>>Male</option>
                         <option value="Female" <%=userUpdate.getGender().equalsIgnoreCase("Female") ? "selected" : ""%>>Female</option>

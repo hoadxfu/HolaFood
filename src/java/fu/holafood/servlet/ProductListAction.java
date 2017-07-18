@@ -43,7 +43,7 @@ public class ProductListAction extends HttpServlet {
         //delete
         if (!deleteAction.equals("") && updateAction.equals("")) {
             int index = Integer.parseInt(deleteAction);
-            if (um.deleteProduct(index) != 0) {
+            if (um.deleteProductCategory(index) != 0 && um.deleteProduct(index) != 0) {
                 request.setAttribute("success", "Deleted successfully");
                 request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
             } else {

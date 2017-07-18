@@ -30,4 +30,17 @@
             </result>
         </action>
     </package>
+    <package name="fileUploadPackage" extends="struts-default">
+        <action name="userImage" class="fu.holafood.action.FileUploadAction">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">102097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success">create.jsp</result>
+            <result name="input">UserImage.jsp</result>
+        </action>
+    </package>
 </struts>
