@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NhocNho
  */
-@WebServlet(name = "ProductListAction", urlPatterns = {"/ProductListAction"})
-public class ProductListAction extends HttpServlet {
+@WebServlet(name = "ProductListDelete", urlPatterns = {"/ProductListDelete"})
+public class ProductListDelete extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,38 +35,17 @@ public class ProductListAction extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        boolean sent = false;
         UserModel um = new UserModel();
         String deleteAction = request.getParameter("deleteAction");
-        String updateAction = request.getParameter("updateAction");
-        
-        //delete
-        if (!deleteAction.equals("") && updateAction.equals("")) {
-            int index = Integer.parseInt(deleteAction);
-            if (um.deleteProductCategory(index) != 0 && um.deleteProduct(index) != 0) {
-                request.setAttribute("success", "Deleted successfully");
-                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
-            } else {
-                request.setAttribute("error", "Cannot delete");
-                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
-            }
-            sent = true;
 
-        } else if (deleteAction.equals("") && !updateAction.equals("")) { //update
-            int index = Integer.parseInt(updateAction);
-            Product p = um.getProductById(index);
-            if (p != null) {
-                request.setAttribute("productUpdate", p);
-                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
-            } else {
-                request.setAttribute("error", "Cannot update");
-                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
-            }
-            sent = true;
-        }
-        
-        if (!sent) {
-            response.sendRedirect("admin/products/list.jsp");
+        //delete
+        int index = Integer.parseInt(deleteAction);
+        if (um.deleteProductCategory(index) != 0 && um.deleteProduct(index) != 0) {
+            request.setAttribute("success", "Deleted successfully");
+            request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+        } else {
+            request.setAttribute("error", "Cannot delete");
+            request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
         }
     }
 
@@ -85,7 +64,7 @@ public class ProductListAction extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ProductListAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductListDelete.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -103,7 +82,7 @@ public class ProductListAction extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ProductListAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductListDelete.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -298,5 +298,17 @@ public class UserModel extends DBContext {
         }
         return maxID;
     }
-
+    
+    public ArrayList<Integer> getListCategoriesByProductId(int productId) throws Exception {
+        ArrayList<Integer> categoriesId = new ArrayList<>();
+        String sql = "Select * from product_category where product_id = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setInt(1, productId);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            categoriesId.add(rs.getInt(2));
+        }
+        return categoriesId;
+    }
+ 
 }
