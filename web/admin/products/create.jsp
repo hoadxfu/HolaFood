@@ -1,3 +1,4 @@
+<%@page import="fu.holafood.entity.Category"%>
 <%@page import="java.util.List"%>
 <%@page import="fu.holafood.entity.User"%>
 <%@page import="fu.holafood.model.UserModel"%>
@@ -29,20 +30,17 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <form action="${pageContext.request.contextPath}/CreateProduct" method="POST">
-                <div class="form-group">
-                    <label>Product Name: </label>
-                    <input type="text" class="form-control" placeholder="" name="productName">
-                </div>
-                <div class="form-group">
-                    <label>Slug: </label>
-                    <input type="text" class="form-control" placeholder="" name="slug">
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea name="description" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                </div>
+            <div class="form-group">
+                <label>Choose image to upload</label>
+                <s:form id="upimgForm" action="userImage" method="post" enctype="multipart/form-data">
+                    <s:file name="userImage" label="User Image"/>
+                    <s:submit value="Upload" align="right" />
+                </s:form>
+            </div>
 
+
+            <form id="inforForm" action="${pageContext.request.contextPath}/CreateProduct" method="POST">
+                <input type="hidden" name="img_feature" value="<s:property value="userImageFileName" />">
                 <div class="form-group text-center">
                     <div class="col-sm-12">
                         <%
@@ -54,6 +52,34 @@
                             }
                         %>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label>Product Name: </label>
+                    <input type="text" class="form-control" placeholder="" name="productName">
+                </div>
+                <div class="form-group">
+                    <label>Slug: </label>
+                    <input type="text" class="form-control" placeholder="" name="slug">
+                </div>
+                <div class="form-group">
+                    <label for="categories" class="col-sm-2 control-label">Category</label>
+                    <select  class="form-control" name="categories" id="categories">
+                        <%
+                            List<Category> listCategory = um.getCategory();
+                            for (int i = 0; i < listCategory.size(); i++) {
+                                Category categories = listCategory.get(i);
+                                int id = categories.getId();
+                                String name = categories.getName();
+                        %>
+                        <option value="<%=id%>"><%=name%></option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </div>  
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-info pull-right">Create New</button>
