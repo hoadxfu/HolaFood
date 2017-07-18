@@ -1,5 +1,5 @@
 <jsp:include page="/WEB-INF/pages/header.jsp">
-    <jsp:param name="title" value="Product detail"/>
+    <jsp:param name="title" value="${product.name}"/>
 </jsp:include>
 <%@ taglib uri="/struts-tags" prefix="s" %>  
 
@@ -10,7 +10,7 @@
                 <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
             </div>
             <div class="col-md-8 product-info">
-                <h1 class="title">Product name</h1>
+                <h1 class="title"><s:property value="product.name"/></h1>
                 <div class="item-rating">
                     <span>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -21,9 +21,7 @@
                     </span>
                     <span> 102 lượt</span>
                 </div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed justo neque. Phasellus eget lobortis elit, sit amet ornare ex. Suspendisse ultrices dui mauris, non dictum massa iaculis at. Cras auctor hendrerit finibus. Vestibulum vitae ligula a nulla maximus iaculis a nec lorem. In nunc ipsum, luctus eu elit eget, tincidunt molestie magna. Quisque risus nunc, pharetra a lectus at, ullamcorper placerat eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.<br/>
-                </p>
+                <p><s:property value="product.description" escapeHtml="false"/></p>
                 <div class="item-action-box">
                     <span class="checked-in">
                         <i class="fa fa-map-marker" aria-hidden="true"></i> 69
