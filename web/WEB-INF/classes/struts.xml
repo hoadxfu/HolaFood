@@ -24,7 +24,7 @@
             </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="success">create.jsp</result>
-            <result name="input">UserImage.jsp</result>
+            <result name="input">create.jsp</result>
         </action>
     </package>
 </struts>

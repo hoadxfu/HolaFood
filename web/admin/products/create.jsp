@@ -32,10 +32,22 @@
         <div class="box-body">
             <div class="form-group">
                 <label>Choose image to upload</label>
-                <s:form id="upimgForm" action="userImage" method="post" enctype="multipart/form-data">
-                    <s:file name="userImage" label="User Image"/>
-                    <s:submit value="Upload" align="right" />
+                <s:form theme="simple" cssClass="form-horizontal" id="upimgForm" action="userImage" enctype="multipart/form-data" >
+                    <s:file name="userImage"/>
+                    <s:submit value="Upload" cssClass="btn-success"/>
                 </s:form>
+                <s:set var="sucess" value="userImageFileName" />
+                <br/>
+                <div class="form-group text-center">
+                    <div class="col-sm-12">
+                        <%
+                            String s = (String) request.getAttribute("sucess");
+                            if (null != s) {
+                                out.println("<p class=\"bg-success\">" + "upload successfully." + "</p>");
+                            } 
+                        %>
+                    </div>
+                </div>
             </div>
 
 
