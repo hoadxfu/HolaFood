@@ -49,8 +49,7 @@ public class FileUploadAction extends ActionSupport implements ServletContextAwa
             File fileToCreate = new File(filePath, this.userImageFileName);
             FileUtils.copyFile(this.userImage, fileToCreate);
         } catch (Exception e) {
-            e.printStackTrace();
-            addActionError(e.getMessage());
+            System.out.println("Cannot upload");
             return INPUT;
         }
         return SUCCESS;
