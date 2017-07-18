@@ -32,6 +32,11 @@ body::-webkit-scrollbar-thumb
         transparent 75%,
         transparent)
 }
+
+.load-more {
+    margin-top: 10px;
+}
+
 .form-control, .form-group-lg .form-control {
     border-radius: 0;
 }

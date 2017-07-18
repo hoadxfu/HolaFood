@@ -97,73 +97,9 @@
             <h2 class="block-title">
                 <span>Hôm nay ăn gì?</span>
             </h2>
-            <s:iterator value="products">
-                <a href="product.html?id=<s:property value="id"/>">
-                    <div class="col-md-4 item">
-                        <div class="feature-img">
-                            <img src="assets/images/stock-photo-105815115.jpg" alt=""/>
-                        </div>
-                        <div class="item-info">
-                            <h3 class="item-name"><s:property value="name"/></h3>
-                            <div class="item-rating">
-                                <span>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </span>
-                                <span> 102 lượt</span>
-                            </div>
-                            <div class="comment-box">
-                                <ul>
-                                    <li>
-                                        <div class="user-avatar">
-                                            <img src="admin/assets/img/avatar2.png" alt=""/>
-                                        </div>
-                                        <div class="user-info">
-                                            <span class="username">
-                                                <strong>Ms Nobody</strong>
-                                            </span>
-                                            <p class="user-review">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="user-avatar">
-                                            <img src="admin/assets/img/avatar5.png" alt=""/>
-                                        </div>
-                                        <div class="user-info">
-                                            <span class="username">
-                                                <strong>hoadx</strong>
-                                            </span>
-                                            <p class="user-review">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id condimentum purus ...
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="item-action-box">
-                                <span class="checked-in">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i> 69
-                                </span>
-                                <span class="review">
-                                    <i class="fa fa-comments" aria-hidden="true"></i> 96
-                                </span>
-                            </div>
-                            <div class="bookmark">
-                                <button>
-                                    <i class="fa fa-bookmark" aria-hidden="true"></i> Lưu
-                                </button>
-                            </div>
-                        </div>
-                    </div><!--/.end item -->
-                </a>
-            </s:iterator>
+            <div id="list-item-result" data-paged="1"></div>
             <div class="clearfix"></div>
-            <div id="fountainG">
+            <div id="fountainG" style="display: none;">
                 <div id="fountainG_1" class="fountainG"></div>
                 <div id="fountainG_2" class="fountainG"></div>
                 <div id="fountainG_3" class="fountainG"></div>
@@ -173,6 +109,8 @@
                 <div id="fountainG_7" class="fountainG"></div>
                 <div id="fountainG_8" class="fountainG"></div>
             </div>
+            <div class="clearfix"></div>
+            <button class="btn btn-primary center-block load-more" id="load-more">Load More</button>
         </section>
     </main><!--/. end site-content -->
 </div>

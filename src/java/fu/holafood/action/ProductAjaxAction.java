@@ -18,18 +18,28 @@ import org.apache.struts2.convention.annotation.Result;
  */
 public class ProductAjaxAction extends ActionSupport {
 
+    final int postPerPage = 6;
+    private int paged;
     private ArrayList<Product> products;
 
-    public ProductAjaxAction() throws Exception {
-        ProductModel pm = new ProductModel();
-        products = pm.getAll();
-    }
-    
     @Override
     public String execute() throws Exception {
+        ProductModel pm = new ProductModel();
+        int limit = paged * postPerPage;
+        int offset = (paged - 1) * postPerPage;
+        System.out.println(limit + " " + offset);
+        products = pm.getAll(limit, offset);
         return SUCCESS;
     }
-    
+
+    public int getPaged() {
+        return paged;
+    }
+
+    public void setPaged(int paged) {
+        this.paged = paged;
+    }
+
     public ArrayList<Product> getProducts() {
         return products;
     }
