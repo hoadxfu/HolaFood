@@ -86,7 +86,7 @@ public class ProductListUpdate extends HttpServlet {
             boolean check = true;
             for (int i = 0; i < selectedCategoriesIds.length; i++) {
                 int categoryId = Integer.parseInt(selectedCategoriesIds[i]);
-                if (um.addProductCategory(um.getMaxId("products"), categoryId, p.getCreatedAt(), updateAt) == 0) {
+                if (um.addProductCategory(id, categoryId, p.getCreatedAt(), updateAt) == 0) {
                     check = false;
                 }
             }
