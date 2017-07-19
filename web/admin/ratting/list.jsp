@@ -19,7 +19,7 @@
     UserModel um = new UserModel();
     RatingModel rm = new RatingModel();
     String permission = null;
-   // ArrayList<Rate> rates = null;
+    // ArrayList<Rate> rates = null;
     try {
         permission = um.getPermision(c);
         //rates = um.getRate();
@@ -64,20 +64,20 @@
 
         <form action="${pageContext.request.contextPath}/RateListActionUpdate" method="POST">
             <input type="hidden" name="rateId" value="<%=ra.getId()%>">
-            
+
             <div class="form-group">
                 <label>Rating Value: </label>
-                <input type="text" class="form-control" value="<%=ra.getValue() %>" name="value">
+                <input type="text" class="form-control" value="<%=ra.getValue()%>" name="value">
             </div>
-           
+
             <div class="form-group text-center">
                 <div class="col-sm-12">
                     <%
                         if (null != request.getAttribute("error")) {
-                            out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
+                            out.println("<div class=\"alert alert-error\" role=\"alert\">" + request.getAttribute("error") + "</div>");
                         }
                         if (null != request.getAttribute("success")) {
-                            out.println("<p class=\"bg-success\">" + request.getAttribute("success") + "</p>");
+                            out.println("<div class=\"alert alert-success\" role=\"alert\">" + request.getAttribute("success") + "</div>");
                         }
                     %>
                 </div>
@@ -146,12 +146,12 @@
                                 for (int i = 0; i < list.size(); i++) {
                                     Rate rat = list.get(i);
                                     Product pro = um.getProductById(rat.getItem_id());
-                                   
+
                         %>
                         <tr>
                             <td><%=rat.getId()%></td>                            
-                            <td><%=pro.getName() %></td>
-                            <td><%=rat.getValue() %></td>
+                            <td><%=pro.getName()%></td>
+                            <td><%=rat.getValue()%></td>
                             <td><%=rat.getCreatedAt()%></td>
                             <td><%=rat.getUpdatedAt()%></td>
                             <td>

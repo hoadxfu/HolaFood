@@ -61,10 +61,10 @@
                         <div class="col-sm-12">
                             <%
                                 if (null != request.getAttribute("error")) {
-                                    out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
+                                    out.println("<div class=\"alert alert-error\" role=\"alert\">" + request.getAttribute("error") + "</div>");
                                 }
                                 if (null != request.getAttribute("success")) {
-                                    out.println("<p class=\"bg-success\">" + request.getAttribute("success") + "</p>");
+                                    out.println("<div class=\"alert alert-success\" role=\"alert\">" + request.getAttribute("success") + "</div>");
                                 }
                             %>
                         </div>

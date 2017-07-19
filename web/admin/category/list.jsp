@@ -52,65 +52,67 @@
     Category ca = (Category) request.getAttribute("categoryUpdate");
     if (ca != null) {
 %>
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">Update Category</h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Update Category</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
 
-        <form action="${pageContext.request.contextPath}/CategoryListActionUpdate" method="POST">
-            <input type="hidden" name="categoryId" value="<%=ca.getId()%>">
-            <div class="form-group">
-                <label>Category Parent: </label>
-                <select  name="newPid">
-                    <option value="0">None</option>
-                    <%
-                        if (categories != null) {
-                            for (int i = 0; i < categories.size(); i++) {
-                                if (ca.getId() != categories.get(i).getId()) {
-                    %>
-                    <option value="<%=categories.get(i).getId()%>"><%=categories.get(i).getName()%></option>
-                    <%
+            <form action="${pageContext.request.contextPath}/CategoryListActionUpdate" method="POST">
+                <input type="hidden" name="categoryId" value="<%=ca.getId()%>">
+                <div class="form-group">
+                    <label>Category Parent: </label>
+                    <select  name="newPid">
+                        <option value="0">None</option>
+                        <%
+                            if (categories != null) {
+                                for (int i = 0; i < categories.size(); i++) {
+                                    if (ca.getId() != categories.get(i).getId()) {
+                        %>
+                        <option value="<%=categories.get(i).getId()%>"><%=categories.get(i).getName()%></option>
+                        <%
+                                    }
                                 }
                             }
-                        }
-                    %>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Category Name: </label>
-                <input type="text" class="form-control" value="<%=ca.getName()%>" name="newCategoryName">
-            </div>
-            <div class="form-group">
-                <label>Slug: </label>
-                <input type="text" class="form-control" value="<%=ca.getSlug()%>" name="newSlug">
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea id="destext" name="newDescription"  class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-            </div>
-
-            <div class="form-group text-center">
-                <div class="col-sm-12">
-                    <%
-                        if (null != request.getAttribute("error")) {
-                            out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
-                        }
-                        if (null != request.getAttribute("success")) {
-                            out.println("<p class=\"bg-success\">" + request.getAttribute("success") + "</p>");
-                        }
-                    %>
+                        %>
+                    </select>
                 </div>
-            </div>
-            <div class="box-footer">
-                <input class="btn btn-info pull-right" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/category/list.jsp';" value="Cancel" />
-                <button type="submit" class="btn btn-info pull-right">Update</button>
-            </div>
-            <!-- /.box-footer -->
-        </form>
+                <div class="form-group">
+                    <label>Category Name: </label>
+                    <input type="text" class="form-control" value="<%=ca.getName()%>" name="newCategoryName">
+                </div>
+                <div class="form-group">
+                    <label>Slug: </label>
+                    <input type="text" class="form-control" value="<%=ca.getSlug()%>" name="newSlug">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="destext" name="newDescription"  class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><%= ca.getDescreption()%></textarea>
+                </div>
+
+                <div class="form-group text-center">
+                    <div class="col-sm-12">
+                        <%
+                            if (null != request.getAttribute("error")) {
+                                out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
+                            }
+                            if (null != request.getAttribute("success")) {
+                                out.println("<p class=\"bg-success\">" + request.getAttribute("success") + "</p>");
+                            }
+                        %>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <input class="btn btn-info pull-right" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/category/list.jsp';" value="Cancel" />
+                    <button type="submit" class="btn btn-info pull-right">Update</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
     </div>
-</div>
+</section>
 <%
     }
 %>
@@ -135,10 +137,10 @@
                         <div class="col-sm-12">
                             <%
                                 if (null != request.getAttribute("error")) {
-                                    out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
+                                    out.println("<div class=\"alert alert-error\" role=\"alert\">" + request.getAttribute("error") + "</div>");
                                 }
                                 if (null != request.getAttribute("success")) {
-                                    out.println("<p class=\"bg-success\">" + request.getAttribute("success") + "</p>");
+                                    out.println("<div class=\"alert alert-success\" role=\"alert\">" + request.getAttribute("success") + "</div>");
                                 }
                             %>
                         </div>
