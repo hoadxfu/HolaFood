@@ -17,6 +17,15 @@
         </action>
         <action name="product" class="fu.holafood.action.ProductDetailAction" method="execute">
             <result name="success">WEB-INF/pages/jsp/product.jsp</result>
+            <result name="error" type="redirectAction">home</result>
+            <result name="reviewSuccess">
+                <param name="location">WEB-INF/pages/jsp/product.jsp</param>
+                <param name="mess">reviewSuccess</param>
+            </result>
+            <result name="reviewError">
+                <param name="location">WEB-INF/pages/jsp/product.jsp</param>
+                <param name="mess">reviewError</param>
+            </result>
         </action>
         <action name="profile" class="fu.holafood.action.ProfileAction" method="execute">
             <result name="success">WEB-INF/pages/jsp/profile.jsp</result>

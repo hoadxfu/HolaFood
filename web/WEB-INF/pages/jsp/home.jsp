@@ -17,7 +17,7 @@
                 <div role="tabpanel" class="tab-pane active" id="find-anything">
                     <div class="row">
                         <div class="filter-form col-md-8">
-                            <form method="post" onsubmit="return false;">
+                            <form method="post" id="filter">
                                 <div class="form-group form-group-lg">
                                     <label class="control-label" for="txtFilter">Bạn muốn tìm gì?</label>
                                     <div class="input-group">

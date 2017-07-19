@@ -20,6 +20,7 @@ public class ProductAjaxAction extends ActionSupport {
 
     final int postPerPage = 6;
     private int paged;
+    private String filter;
     private ArrayList<Product> products;
 
     @Override
@@ -27,9 +28,16 @@ public class ProductAjaxAction extends ActionSupport {
         ProductModel pm = new ProductModel();
         int limit = paged * postPerPage;
         int offset = (paged - 1) * postPerPage;
-        System.out.println(limit + " " + offset);
-        products = pm.getAll(limit, offset);
+        products = pm.getAll(limit, offset, filter);
         return SUCCESS;
+    }
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
     }
 
     public int getPaged() {

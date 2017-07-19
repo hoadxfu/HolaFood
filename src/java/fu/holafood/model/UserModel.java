@@ -113,16 +113,25 @@ public class UserModel extends DBContext {
         }
         return "";
     }
-    
-    public int getUserIdByName(String name) throws Exception {
-        String sql = "select * from users where username = ?";
+
+    public User getUserIdByName(String name) throws Exception {
+        String sql = "select * from users u inner join permission_groups permi_gr on u.permi = permi_gr.id where u.username = ?";
         PreparedStatement ps = getConnection().prepareCall(sql);
         ps.setString(1, name);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            return rs.getInt("id");
+            return new User(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(11),
+                    rs.getInt(7) == 1 ? "Male" : "Female",
+                    rs.getDate(8),
+                    rs.getTimestamp(9)
+            );
         }
-        return 0;
+        return null;
     }
 
     public ArrayList<PermissionGroup> getPermissionGroups() throws Exception {
@@ -195,8 +204,8 @@ public class UserModel extends DBContext {
         return ps.executeUpdate();
 
     }
-    
-    public int addProductCategory(int productId, int categoryId, Timestamp createAt, Timestamp updateAt ) throws Exception{
+
+    public int addProductCategory(int productId, int categoryId, Timestamp createAt, Timestamp updateAt) throws Exception {
         String sql = "insert into product_category values(?, ?, ?, ?)";
         PreparedStatement ps = getConnection().prepareCall(sql);
         ps.setInt(1, productId);
@@ -309,7 +318,7 @@ public class UserModel extends DBContext {
         }
         return maxID;
     }
-    
+
     public ArrayList<Integer> getListCategoriesByProductId(int productId) throws Exception {
         ArrayList<Integer> categoriesId = new ArrayList<>();
         String sql = "Select * from product_category where product_id = ?";
@@ -321,5 +330,5 @@ public class UserModel extends DBContext {
         }
         return categoriesId;
     }
- 
+
 }

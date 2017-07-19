@@ -37,6 +37,14 @@ body::-webkit-scrollbar-thumb
     margin-top: 10px;
 }
 
+.btn-scroll-top {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    border-radius: 100px;
+}
+
 .form-control, .form-group-lg .form-control {
     border-radius: 0;
 }
@@ -585,6 +593,19 @@ h2.block-title span {
     margin-top: 15px;
     font-size: 22px;
     font-weight: 600;
+}
+
+.product-info .categories {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    list-style-type: none;
+    font-weight: 600;
+}
+
+.product-info .categories li {
+    float: left;
+    padding-right: 8px;
 }
 
 .product-info p {

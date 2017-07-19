@@ -15,7 +15,7 @@ $(document).ready(function () {
         return '<a href="product.html?id=' + item.id + '">\n\
                     <div class="col-md-4 item">\n\
                         <div class="feature-img">\n\
-                            <img src="assets/images/stock-photo-105815115.jpg" alt=""/>\n\
+                            <img src="http://lorempixel.com/600/400/food/' + item.id % 10 + '" alt=""/>\n\
                         </div>\n\
                         <div class="item-info">\n\
                             <h3 class="item-name">' + item.name + '</h3>\n\
@@ -77,6 +77,18 @@ $(document).ready(function () {
                 </a>';
     }
 
+    $('#filter').submit(function() {
+        var result = $('#list-item-result');
+        result.empty();
+        result.data('paged', 1);
+        result.data('filter', $('#txtFilter').val());
+        loadListProduct();
+        $('html, body').animate({
+            scrollTop: $(".list-item").offset().top - 75
+        }, 2000);
+        return false;
+    });
+
     $('#load-more').click(function () {
         var result = $('#list-item-result'),
                 paged = result.data('paged');
@@ -87,13 +99,15 @@ $(document).ready(function () {
     function loadListProduct() {
         var result = $('#list-item-result'),
                 paged = result.data('paged'),
+                filter = result.data('filter'),
                 loading = $('#fountainG');
         loading.show();
         setTimeout(function () {
             $.post(
                     'ajaxProduct.html',
                     {
-                        paged: paged
+                        paged: paged,
+                        filter: filter
                     },
                     function (response) {
                         loading.hide();
