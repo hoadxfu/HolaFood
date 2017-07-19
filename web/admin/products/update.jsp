@@ -40,11 +40,11 @@
             <input type="hidden" name="productId" value="<%=p.getId()%>">
             <div class="form-group">
                 <label>Product Name: </label>
-                <input id="newProductName" type="text" class="form-control" placeholder="" name="newProductName">
+                <input id="newProductName" type="text" class="form-control" value="<%=p.getName()%>" name="newProductName">
             </div>
             <div class="form-group">
                 <label>Slug: </label>
-                <input id="newSlug" type="text" class="form-control" placeholder="" name="newSlug">
+                <input id="newSlug" type="text" class="form-control" value="<%=p.getSlug()%>" name="newSlug">
             </div>
 
             <div class="form-group">
@@ -81,7 +81,7 @@
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea id="destext" name="newDescription" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <textarea id="destext" name="newDescription" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><%=p.getDescription()%></textarea>
             </div>
 
             <div class="form-group text-center">
@@ -104,11 +104,6 @@
         </form>
     </div>
 </div>
-<script>
-    document.getElementById('newProductName').value = '<%=p.getName()%>';
-    document.getElementById('newSlug').value = '<%=p.getSlug()%>';
-    document.getElementById('destext').value = '<%=p.getDescription()%>';
-</script>
 <%
     }
 %>
