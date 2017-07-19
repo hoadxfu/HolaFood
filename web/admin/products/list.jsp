@@ -35,7 +35,7 @@
         } 
     }
     function updateProduct(userId) {
-        window.location.href = "update.jsp?id=" + userId;
+        window.location.href = "${pageContext.request.contextPath}/admin/products/update.jsp?id=" + userId;
     }
 </script>
 
