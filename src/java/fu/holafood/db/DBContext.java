@@ -20,7 +20,7 @@ public class DBContext {
         String url = "jdbc:sqlserver://localhost:1433;"
                 + "database=holafood_db;"
                 + "user=sa;"
-                + "password=abc123@!";
+                + "password=123456789";
         //loading sql driver
         Class.forName(driver);
         //open and return connection
