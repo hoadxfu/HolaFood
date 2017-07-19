@@ -44,7 +44,7 @@
                             String s = (String) request.getAttribute("sucess");
                             if (null != s) {
                                 out.println("<p class=\"bg-success\">" + "upload successfully." + "</p>");
-                            } 
+                            }
                         %>
                     </div>
                 </div>
@@ -75,19 +75,30 @@
                 </div>
                 <div class="form-group">
                     <label for="categories" class="col-sm-2 control-label">Category</label>
-                    <select  class="form-control" name="categories" id="categories">
-                        <%
-                            List<Category> listCategory = um.getCategory();
-                            for (int i = 0; i < listCategory.size(); i++) {
-                                Category categories = listCategory.get(i);
-                                int id = categories.getId();
-                                String name = categories.getName();
-                        %>
-                        <option value="<%=id%>"><%=name%></option>
-                        <%
+                    <br/>
+
+
+                    <%
+                        List<Category> listCategory = um.getCategory();
+                        int i;
+                        for (i = 0; i < listCategory.size(); i++) {
+                            Category categories = listCategory.get(i);
+                            int id = categories.getId();
+                            String name = categories.getName();
+                            String ch = "";
+                            if (i == 0) {
+                                ch = "checked";
                             }
-                        %>
-                    </select>
+                    %>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="categories" value="<%=id%>" <%=ch%>/>
+                            <%=name%>
+                        </label>
+                    </div>
+                    <%
+                        }
+                    %>
                 </div>  
                 <div class="form-group">
                     <label>Description</label>

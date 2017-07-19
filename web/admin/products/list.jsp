@@ -1,3 +1,4 @@
+<%@page import="fu.holafood.entity.Category"%>
 <%@page import="fu.holafood.entity.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="fu.holafood.entity.User"%>
@@ -31,67 +32,12 @@
                 document.getElementById('deleteAction').value = userId;
                 document.getElementById('actionForm').submit();
             }
-        } else {
-            document.getElementById('updateAction').value = userId;
-            document.getElementById('actionForm').submit();
-        }
+        } 
+    }
+    function updateProduct(userId) {
+        window.location.href = "update.jsp?id=" + userId;
     }
 </script>
-
-<%
-    Product p = (Product) request.getAttribute("productUpdate");
-    if (p != null) {
-%>
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">Update Product</h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-
-        <form action="${pageContext.request.contextPath}/ProductListActionUpdate" method="POST">
-            <input type="hidden" name="productId" value="<%=p.getId()%>">
-            <div class="form-group">
-                <label>Product Name: </label>
-                <input id="newProductName" type="text" class="form-control" placeholder="" name="newProductName">
-            </div>
-            <div class="form-group">
-                <label>Slug: </label>
-                <input id="newSlug" type="text" class="form-control" placeholder="" name="newSlug">
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea id="destext" name="newDescription" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-            </div>
-
-            <div class="form-group text-center">
-                <div class="col-sm-12">
-                    <%
-                        if (null != request.getAttribute("error")) {
-                            out.println("<p class=\"bg-danger\">" + request.getAttribute("error") + "</p>");
-                        }
-                        if (null != request.getAttribute("success")) {
-                            out.println("<p class=\"bg-success\">" + request.getAttribute("success") + "</p>");
-                        }
-                    %>
-                </div>
-            </div>
-            <div class="box-footer">
-                <input class="btn btn-info pull-right" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/products/list.jsp';" value="Cancel" />
-                <button type="submit" class="btn btn-info pull-right">Update</button>
-            </div>
-            <!-- /.box-footer -->
-        </form>
-    </div>
-</div>
-<script>
-    document.getElementById('newProductName').value = '<%=p.getName()%>';
-    document.getElementById('newSlug').value= '<%=p.getSlug()%>';
-    document.getElementById('destext').value = '<%=p.getDescription()%>';
-</script>
-<%
-    }
-%>
 
 <!-- Main content -->
 <section class="content">
@@ -109,6 +55,8 @@
                             </div>
                         </div>
                     </div>
+                    <br/>
+                    <br/>
                     <div class="form-group text-center">
                         <div class="col-sm-12">
                             <%
@@ -123,9 +71,8 @@
                     </div>
                 </div>
 
-                <form id='actionForm' action="${pageContext.request.contextPath}/ProductListAction" method="POST">
+                <form id='actionForm' action="${pageContext.request.contextPath}/ProductListDelete" method="POST">
                     <input id="deleteAction" type="hidden" name="deleteAction" value="">
-                    <input id="updateAction" type="hidden" name="updateAction" value="">
                 </form>
 
                 <!-- /.box-header -->
@@ -153,7 +100,7 @@
                             <td><%=pro.getUpdatedAt()%></td>
                             <td>
                                 <input type="button" value="Delete" onclick="getProductId(<%=pro.getId()%>, 'deleteButton')">
-                                <input type="button" value="Update" onclick="getProductId(<%=pro.getId()%>, 'updateButton')">
+                                <input type="button" value="Update" onclick="updateProduct(<%=pro.getId()%>)"/>
                             </td>
                         </tr>
                         <%
@@ -172,8 +119,3 @@
 </section>
 
 <jsp:include page="/WEB-INF/pages/admin/footer.jsp"/>
-<script>
-    $(function () {
-        $("#destext").wysihtml5();
-    });
-</script>

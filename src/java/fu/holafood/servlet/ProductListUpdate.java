@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NhocNho
  */
-@WebServlet(name = "ProductListActionUpdate", urlPatterns = {"/ProductListActionUpdate"})
-public class ProductListActionUpdate extends HttpServlet {
+@WebServlet(name = "ProductListUpdate", urlPatterns = {"/ProductListUpdate"})
+public class ProductListUpdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,6 +44,7 @@ public class ProductListActionUpdate extends HttpServlet {
         String newProductName = request.getParameter("newProductName");
         String newSlug = request.getParameter("newSlug");
         String newDescription = request.getParameter("newDescription");
+        String[] selectedCategoriesIds = request.getParameterValues("categories");
 
         java.util.Date today = new java.util.Date();
         Timestamp updateAt = new java.sql.Timestamp(today.getTime());
@@ -52,38 +53,50 @@ public class ProductListActionUpdate extends HttpServlet {
         String slug;
         String des;
         boolean nameChange = false;
-        if (newProductName.equals("")) {
+
+        if (newProductName.equals(p.getName())) {
             name = p.getName();
         } else {
-            if (newProductName.equals(p.getName())) {
-                name = p.getName();
-            } else {
-                name = newProductName;
-                nameChange = true;
-            }
+            name = newProductName;
+            nameChange = true;
         }
 
         if (newSlug.equals("")) {
             if (nameChange) {
                 String tmp = uc.removeAccent(newProductName);
                 slug = tmp.replaceAll("[^a-zA-Z0-9]+", "-");
+                slug = slug.toLowerCase();
             } else {
                 slug = p.getSlug();
             }
         } else {
             newSlug = uc.removeAccent(newSlug);
-            slug = newSlug.replaceAll("[^a-zA-Z0-9]+","-");
+            slug = newSlug.replaceAll("[^a-zA-Z0-9]+", "-");
+            slug = slug.toLowerCase();
         }
-        
-        if (newDescription.equals("")) {
+
+        if (newDescription.equals(p.getDescription())) {
             des = p.getDescription();
         } else {
             des = newDescription;
         }
-        
+
         if (um.updateProduct(id, name, slug, des, p.getCreatedAt(), updateAt) != 0) {
-            request.setAttribute("success", "Updated successfully");
-            request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+            um.deleteProductCategory(id);
+            boolean check = true;
+            for (int i = 0; i < selectedCategoriesIds.length; i++) {
+                int categoryId = Integer.parseInt(selectedCategoriesIds[i]);
+                if (um.addProductCategory(um.getMaxId("products"), categoryId, p.getCreatedAt(), updateAt) == 0) {
+                    check = false;
+                }
+            }
+            if (check) {
+                request.setAttribute("success", "Updated successfully");
+                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+            } else {
+                request.setAttribute("error", "Updated failed");
+                request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+            }
         } else {
             request.setAttribute("error", "Cannot update");
             request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
@@ -106,7 +119,7 @@ public class ProductListActionUpdate extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ProductListActionUpdate.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductListUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -124,7 +137,7 @@ public class ProductListActionUpdate extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ProductListActionUpdate.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductListUpdate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

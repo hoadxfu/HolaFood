@@ -42,30 +42,43 @@ public class CreateProduct extends HttpServlet {
         String slug = request.getParameter("slug");
         String des = request.getParameter("description");
         String img_feature = request.getParameter("img_feature");
-        int categoryId = Integer.parseInt(request.getParameter("categories"));
+        String[] selectedCategoriesIds = request.getParameterValues("categories");
         
+        System.out.println("size: " + selectedCategoriesIds.length);
+
         System.out.println("img feature " + img_feature);
-        
+
         if (productName.equals("") && slug.equals("")) {
             request.setAttribute("error", "Product name and slug cannot both be empty.");
             request.getRequestDispatcher("admin/products/create.jsp").forward(request, response);
             sent = true;
         } else if (!slug.equals("")) {
             slug = uc.removeAccent(slug);
-            slug = slug.replaceAll("[^a-zA-Z0-9]+","-");
+            slug = slug.replaceAll("[^a-zA-Z0-9]+", "-");
             slug = slug.toLowerCase();
         } else if (!productName.equals("") && slug.equals("")) {
             String tmp = uc.removeAccent(productName);
-            slug = tmp.replaceAll("[^a-zA-Z0-9]+","-");
+            slug = tmp.replaceAll("[^a-zA-Z0-9]+", "-");
             slug = slug.toLowerCase();
         }
-        
+
         java.util.Date today = new java.util.Date();
         Timestamp createdAt = new java.sql.Timestamp(today.getTime());
-        
-        if (!sent && userModel.addProduct(productName, slug, des, img_feature, createdAt, createdAt) != 0 && userModel.addProductCategory(userModel.getMaxId("products"), categoryId, createdAt, createdAt) != 0) {
-            request.setAttribute("success", "Created successfully");
-            request.getRequestDispatcher("admin/products/list.jsp").forward(request, response);
+
+        if (!sent && userModel.addProduct(productName, slug, des, img_feature, createdAt, createdAt) != 0) {
+            boolean check = true;
+            for (int i = 0; i < selectedCategoriesIds.length; i++) {
+                int categoryId = Integer.parseInt(selectedCategoriesIds[i]);
+                if (userModel.addProductCategory(userModel.getMaxId("products"), categoryId, createdAt, createdAt) == 0) {
+                    check = false;
+                }
+            }
+            if (check) {
+                response.sendRedirect("admin/products/list.jsp");
+            } else {
+                request.setAttribute("error", "Created failed");
+                request.getRequestDispatcher("admin/products/create.jsp").forward(request, response);
+            }
         } else {
             request.setAttribute("error", "Created failed");
             request.getRequestDispatcher("admin/products/create.jsp").forward(request, response);
