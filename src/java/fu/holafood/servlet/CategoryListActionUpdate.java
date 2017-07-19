@@ -36,8 +36,8 @@ public class CategoryListActionUpdate extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-       
-         UserModel um = new UserModel();
+        request.setCharacterEncoding("UTF-8");
+        UserModel um = new UserModel();
         UserController uc = new UserController();
         int id = Integer.parseInt(request.getParameter("categoryId"));
         Category p = um.getCategoryById(id);
@@ -45,10 +45,10 @@ public class CategoryListActionUpdate extends HttpServlet {
         String newCategoryName = request.getParameter("newCategoryName");
         String newSlug = request.getParameter("newSlug");
         String newDescription = request.getParameter("newDescription");
-
+        
         java.util.Date today = new java.util.Date();
         Timestamp updateAt = new java.sql.Timestamp(today.getTime());
-
+        
         String name;
         String slug;
         String des;
@@ -64,7 +64,7 @@ public class CategoryListActionUpdate extends HttpServlet {
                 nameChange = true;
             }
         }
-
+        
         if (newSlug.equals("")) {
             if (nameChange) {
                 String tmp = uc.removeAccent(newCategoryName);
@@ -74,7 +74,7 @@ public class CategoryListActionUpdate extends HttpServlet {
             }
         } else {
             newSlug = uc.removeAccent(newSlug);
-            slug = newSlug.replaceAll("[^a-zA-Z0-9]+","-");
+            slug = newSlug.replaceAll("[^a-zA-Z0-9]+", "-");
         }
         
         if (newDescription.equals("")) {
@@ -82,8 +82,6 @@ public class CategoryListActionUpdate extends HttpServlet {
         } else {
             des = newDescription;
         }
-        
-        
         
         if (um.updateCategory(id, newPid, name, slug, des, p.getCreatedAt(), updateAt) != 0) {
             request.setAttribute("success", "Updated successfully");

@@ -34,7 +34,7 @@ public class CategoryListAction extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-       
+        request.setCharacterEncoding("UTF-8");
         boolean sent = false;
         UserModel um = new UserModel();
         String deleteAction = request.getParameter("deleteAction");
