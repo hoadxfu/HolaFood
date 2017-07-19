@@ -113,6 +113,17 @@ public class UserModel extends DBContext {
         }
         return "";
     }
+    
+    public int getUserIdByName(String name) throws Exception {
+        String sql = "select * from users where username = ?";
+        PreparedStatement ps = getConnection().prepareCall(sql);
+        ps.setString(1, name);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            return rs.getInt("id");
+        }
+        return 0;
+    }
 
     public ArrayList<PermissionGroup> getPermissionGroups() throws Exception {
         ArrayList<PermissionGroup> permissionGroups = new ArrayList<>();
